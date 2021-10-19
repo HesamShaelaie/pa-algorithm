@@ -3,9 +3,14 @@
 #include <iostream>
 #include <string>
 #include <unistd.h>
+#include <lemon/list_graph.h>
 
 #include "config_t.h"
 #include "tests.h"
+#include "generating_data.h"
+
+using namespace lemon;
+using namespace std;
 
 // Report on how to use the command line to configure this program
 void usage() {
@@ -35,14 +40,16 @@ int main(int argc, char** argv) {
     // get the configuration, print it
     config_t config;
     parseargs(argc, argv, config);
+    
+    testing(First, &config);
     config.dump();
 
-    // crash if the iterations are negative
-    assert(config.threads > 0);
+
+    
+    
+
     if (config.name == "create")
+       gen_data(config);
 
     
-    
-
-    //test_driver(config);
 }

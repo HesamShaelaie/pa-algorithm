@@ -7,11 +7,11 @@ tmp  := $(shell mkdir -p $(ODIR))
 
 # Basic compiler configuration and flags
 CXX      = g++
-CXXFLAGS = -MMD -ggdb -O3 -std=gnu++11 -m$(BITS)
-LDFLAGS	 = -m$(BITS) -lpthread
+CXXFLAGS = -MMD -ggdb -O3 -std=gnu++14 -m$(BITS) -lemon
+LDFLAGS	 = -m$(BITS) -lpthread -lemon
 
 # The basenames of the c++ files that this program uses
-CXXFILES = main tests config_t
+CXXFILES = mathmatics generating_data config_t tests main    
 
 # The executable we will build
 TARGET = $(ODIR)/Project
@@ -24,12 +24,16 @@ OFILES = $(patsubst %, $(ODIR)/%.o, $(CXXFILES))
 DFILES = $(patsubst %.o, %.d, $(OFILES))
 
 # Default rule builds the executable
-all: $(TARGET)
+all: $(TARGET) 
 
 # clean up everything by clobbering the output folder
 clean:
-	@echo cleaning up...
+	@echo cleaning up files...
 	@rm -rf $(ODIR)
+
+cleanx:
+	@echo cleaning instances...
+	@rm -rf instances
 
 # build an .o file from a .cc file
 $(ODIR)/%.o: %.cc
@@ -37,18 +41,19 @@ $(ODIR)/%.o: %.cc
 	@$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 # Link rule for building the target from .o files
+
 $(TARGET): $(OFILES)
 	@echo [LD] $^ "-->" $@
 	@$(CXX) -o $@ $^ $(LDFLAGS)
 
 # Remember that 'all' and 'clean' aren't real targets
-.PHONY: all clean
+.PHONY: all clean cleanx
 
 run:
-	./$(ODIR)/Project -n create -t 5
+	@./$(ODIR)/Project -m create -t 1
 
 # Pull in all dependencies
 -include $(DFILES)
 
-
+rebuild: clean all
 

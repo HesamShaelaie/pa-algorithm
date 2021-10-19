@@ -1,10 +1,12 @@
+#ifndef _configuration_h
+#define _configuration_h
+
 #include <iostream>
 #include <string>
 
 // store all of our command-line configuration parameters
 struct config_t {
 
-  
     std::string  name;
     int threads;
 
@@ -14,3 +16,4 @@ struct config_t {
     // Print the values of the iters, and name fields
     void dump();
 };
+#endif
