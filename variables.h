@@ -6,18 +6,15 @@ struct arcinfo
     int st;
     int ed;
     float cost;
-    float weight;
+    float time;
     arcinfo()
     {
         st = -1;
         ed = -1;
         cost = 0;
-        weight = 0;
-
+        time = 0;
     } 
 };
-
-
 
 
 #endif

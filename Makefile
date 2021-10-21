@@ -52,6 +52,8 @@ $(TARGET): $(OFILES)
 run:
 	@./$(ODIR)/Project -m create -t 1
 
+test:
+	@./$(ODIR)/Project -m test -t 1
 # Pull in all dependencies
 -include $(DFILES)
 

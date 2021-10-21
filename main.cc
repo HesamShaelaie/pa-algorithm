@@ -5,6 +5,8 @@
 #include <unistd.h>
 #include <lemon/list_graph.h>
 
+
+#include "variables.h"
 #include "config_t.h"
 #include "tests.h"
 #include "generating_data.h"
@@ -36,20 +38,31 @@ void parseargs(int argc, char** argv, config_t& cfg) {
 }
 
 // The main routine simply parses the arguments, dumps the arguments, populates the
-int main(int argc, char** argv) {
+int main(int argc, char** argv) 
+{
     // get the configuration, print it
     config_t config;
     parseargs(argc, argv, config);
     
-    testing(First, &config);
+    
     config.dump();
 
-
-    
-    
-
     if (config.name == "create")
-       gen_data(config);
+    {
+        gen_data(config);
+    }
+    else if (config.name == "test")
+    {
+        testing(First, &config);
+        testing(Second, &config);
+    }
+    else
+    {
+        
+    }
+    
+
+    
 
     
 }

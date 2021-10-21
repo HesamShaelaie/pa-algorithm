@@ -87,6 +87,8 @@ void testing_Permutation()
             throw string("Someting is wrong with Permutation function v1.");
         if (Permutation(20,4)!= 116280)
             throw string("Someting is wrong with Permutation function v2 and the value is  "+ to_string(Permutation(20,4)));
+        if (Permutation(100,2)!= 990)
+            throw string("Someting is wrong with Permutation function v2 and the value is  "+ to_string(Permutation(100,2)));
     }
     catch(const std::exception& e)
     {
@@ -126,7 +128,7 @@ void testing(sections Section, config_t *config)
     {
     case First:
         testing_config(config);
-    
+        break;
     case Second:
         
         testing_Nodes();
