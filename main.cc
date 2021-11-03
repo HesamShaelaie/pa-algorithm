@@ -18,9 +18,19 @@ using namespace std;
 void usage() {
     std::cout
         << "Command-Line Options:" << std::endl
-        << "  -m <string> : mode to create instances or run the algorithm (create, run)" << std::endl
+        << "  -m <int>    : mode to create instances or run the algorithm (create, run)" << std::endl
+        << "Mood 1- create data version 1" << std::endl
+        << "Mood 2- create data version 2" << std::endl 
+        << "Mood 3- run the algorithm" << std::endl
+        << "Mood 4- run the set of tests" << std::endl
         << "  -t <int>    : the number of threads in the experiment" << std::endl
-        << "  -h          : display this message and exit" << std::endl << std::endl;
+        << "  -d <int>    : testing is on or off!!" << std::endl
+        << "  -h          : display this message and exit" << std::endl << std::endl<<endl
+        << "============================================================================" << std::endl
+        << "make crt1  ->  mood 1"<<std::endl
+        << "make crt2  ->  mood 2"<<std::endl
+        << "make run  ->  run"<<std::endl
+        << "make test  ->  test"<<std::endl;
     exit(0);
 }
 
@@ -28,10 +38,12 @@ void usage() {
 void parseargs(int argc, char** argv, config_t& cfg) {
     // parse the command-line options
     int opt;
-    while ((opt = getopt(argc, argv, "m::t:h")) != -1) {
+    while ((opt = getopt(argc, argv, "m::t:d:h")) != -1) {
         switch (opt) {
-          case 'm': cfg.name = std::string(optarg); break;
+          //case 'm': cfg.mood = std::string(optarg); break;
+          case 'm': cfg.mood = atoi(optarg); break;
           case 't': cfg.threads = atoi(optarg); break;
+          case 'd': cfg.testing = atoi(optarg); break;
           case 'h': usage(); break;
         }
     }
@@ -44,25 +56,41 @@ int main(int argc, char** argv)
     config_t config;
     parseargs(argc, argv, config);
     
-    
     config.dump();
 
-    if (config.name == "create")
+    try
     {
-        gen_data(config);
-    }
-    else if (config.name == "test")
-    {
-        testing(First, &config);
-        testing(Second, &config);
-    }
-    else
-    {
+        switch (config.mood)
+        {
+            
+            
+            case 1: //create version one
+                gen_data_without_feasibility(config);
+                break;
+
+            case 2: //create version two
+                gen_data_with_feasibility(config);
+                break;
+
+            case 3: //run the algorithm
+                
+                /* code */
+                break;
+
+            case 4: //run the test
+                testing(First, &config);
+                testing(Second, &config);
+                break;
         
+        default:
+            cout<<"wrong input pragma for the code!!"<<endl;
+            exit(13);
+        }
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
     }
     
-
-    
-
     
 }

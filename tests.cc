@@ -132,6 +132,7 @@ void testing(sections Section, config_t *config)
     case Second:
         
         testing_Nodes();
+        //random generator
         testing_Factorial();
         testing_Permutation();
         testing_Combination();

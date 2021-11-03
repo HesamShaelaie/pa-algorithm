@@ -3,7 +3,7 @@
 
 #include"mathmatics.h"
 #include<iostream>
-
+#include<math.h>
 using namespace std;
 
 
@@ -65,5 +65,57 @@ long long Permutation(int items, int sel)
 {
     return FactorialUntil(items, (items-sel));
 }
+
+
+
+int rand_int_bet(int min, int max)
+{
+    int intmin, intmax;
+    if (min> max)
+    {
+        intmin = max;
+        intmax = min;
+    }
+    else
+    {
+        intmin = min;
+        intmax = max;
+    }
+    
+    
+    int tmp = intmin + (rand()%(intmax-intmin+1));
+    return tmp;
+}
+
+float rand_float_bet(float min, float max, int precision)
+{
+    float floatmin, floatmax;
+    if (min> max)
+    {
+        floatmin = max;
+        floatmax = min;
+    }
+    else
+    {
+        floatmin = min;
+        floatmax = max;
+    }
+    
+    
+    
+    float r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);;
+    float tmp = floatmin + r*(floatmax-floatmin);
+    tmp = int(tmp * pow(10,precision));
+
+    tmp = tmp/pow(10,precision);
+    return tmp;
+}
+
+
+float distance(nodeinfo A, nodeinfo B)
+{
+    return sqrt(pow((A.x-B.x),2) + pow((A.y-B.y),2));
+}
+
 
 #endif

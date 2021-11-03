@@ -7,10 +7,15 @@
 // Print the values of the iters, and name fields as comma separated
 // values, with a header row
 
-void config_t::dump() {
-    std::cout << "# name, threads" << std::endl;
-    std::cout << name << ", "
-                << threads << std::endl;
+void config_t::dump() 
+{
+    std::cout << "# mood, threads, testing" << std::endl;
+    std::cout << mood << ", " << threads << ", ";
+                if (testing == false)
+                    std::cout<< "FALSE" << std::endl;
+                else
+                    std::cout<<"TRUE"<<std::endl;
+                
 }
 
 #endif

@@ -11,7 +11,7 @@ CXXFLAGS = -MMD -ggdb -O3 -std=gnu++14 -m$(BITS) -lemon
 LDFLAGS	 = -m$(BITS) -lpthread -lemon
 
 # The basenames of the c++ files that this program uses
-CXXFILES = mathmatics generating_data config_t tests main    
+CXXFILES = mathmatics generating_data config_t tests exitence index_creator main
 
 # The executable we will build
 TARGET = $(ODIR)/Project
@@ -49,11 +49,22 @@ $(TARGET): $(OFILES)
 # Remember that 'all' and 'clean' aren't real targets
 .PHONY: all clean cleanx
 
+# https://hiltmon.com/blog/2015/08/01/simple-c-plus-plus-from-makefiles-to-xcode-builds/
+
+info:
+	@./$(ODIR)/Project -h
+
+crt1:
+	@./$(ODIR)/Project -m 1 -t 1
+
+crt2:
+	@./$(ODIR)/Project -m 2 -t 1 -d 1
+
 run:
-	@./$(ODIR)/Project -m create -t 1
+	@./$(ODIR)/Project -m 3 -t 1
 
 test:
-	@./$(ODIR)/Project -m test -t 1
+	@./$(ODIR)/Project -m 4 -t 1
 # Pull in all dependencies
 -include $(DFILES)
 
