@@ -228,7 +228,8 @@ void gen_data_without_feasibility(config_t config)
 
 void gen_data_with_feasibility(config_t config)
 {
-    cout<<"gen_data_with_feasibility!!!"<<endl;
+    cout<< "gen_data_with_feasibility!!!" <<endl;
+
     // 1- get the address and create instance folder
     // 2- get the general informantion
         // coordination of the nodes
@@ -238,15 +239,14 @@ void gen_data_with_feasibility(config_t config)
     // 4- decide on number of feasible paths
     // 5- add arcs as long as you reach to the number of arcs
 
-
-    char tmp[256];
-    getcwd(tmp,256); // getting the folder of the codes
-    strcat(tmp, "/instances"); // add the instance to the address
+    char tmp_char[256];
+    getcwd(tmp_char,256); // getting the folder of the codes
+    strcat(tmp_char, "/instances"); // add the instance to the address
 
 
     // checking if the address exists
-    if (!exists(tmp))
-        mkdir(tmp,0777); // if not make the folder
+    if (!exists(tmp_char))
+        mkdir(tmp_char,0777); // if not make the folder
     
     int Ninstance = 10;
     int Nnodes = 100;
@@ -272,7 +272,7 @@ void gen_data_with_feasibility(config_t config)
     ofstream out_G;
 
     char Gname[300];
-    sprintf(Gname, "%s/CSP-info.txt", tmp);
+    sprintf(Gname, "%s/CSP-info.txt", tmp_char);
     out_G.open(Gname, std::ios_base::app);// append to the file
     
     auto end = std::chrono::system_clock::now();
@@ -432,7 +432,29 @@ void gen_data_with_feasibility(config_t config)
             }
         }
         */
-       
+
+
+       int T_cnt1 = 0;
+        for (int i = 0; i < Nnodes; i++)
+        {
+            for (int j = 0; j < Nnodes; j++)
+            {
+                if (Arces[i][j].key)
+                {
+                    T_cnt1++;
+                    
+                }
+                
+            }
+            
+        }
+       /// ================================== creating the paths ==================================
+       /// ================================== creating the paths ==================================
+       /// ================================== creating the paths ==================================
+       /// ================================== creating the paths ==================================
+
+
+
         int **Fpaths = new int*[Nfeasiblepath];
         bool **Opaths = new bool *[Nfeasiblepath];
         int *Npaths = new int [Nfeasiblepath];
@@ -447,7 +469,7 @@ void gen_data_with_feasibility(config_t config)
         }
 
         int Cnt_arc = 0;
-
+        int Cmt =0;
         for (int p = 0; p < Nfeasiblepath; p++)
         {
             cout<<"Path ("<< p <<")"<<endl;
@@ -480,9 +502,29 @@ void gen_data_with_feasibility(config_t config)
                 Tmp_B[0] = true; //starting point cannot be selected at all
                 
                 Cnt++;
-
+                int W_Count = 0;
                 while (Cnt < Tmp_I - 1) //why not -2, since we are counting from 0 to n-1 then we add the ending point by ourself
                 {
+                    W_Count++;
+                    if (W_Count>10000)
+                    {
+                        W_Count = 0;
+                        int onpath = Tmp_P[Cnt-1];
+                        Tmp_B[onpath] = false;
+
+                        Tmp_T -=  Arces[Tmp_P[Cnt-2]][Tmp_P[Cnt-1]].time;
+                        Tmp_C -=  Arces[Tmp_P[Cnt-2]][Tmp_P[Cnt-1]].cost;
+
+                        Cnt--;
+                        if (Cnt <= 1)
+                        {
+                            cout<<"Cnt==1"<<endl;
+                            cout<<"even by back tracking we cannot creat the path!!"<<endl;
+                            exit(111);
+                        }
+
+                    }
+                    
                     cout<<Cnt<<endl;
                     //int tmp_n = rand_int_bet(1,Nnodes-2); // no start (0) and no finish (Nnodes-1) if the rand is inclusive???
                     int tmp_n = rand_int_bet(1, NNeighbor);
@@ -508,8 +550,8 @@ void gen_data_with_feasibility(config_t config)
                         Cnt++;
                         try
                         {
-                            Tmp_T +=  Arces[Tmp_P[Cnt-2],Tmp_P[Cnt-1]]->time;
-                            Tmp_C +=  Arces[Tmp_P[Cnt-2],Tmp_P[Cnt-1]]->cost;
+                            Tmp_T +=  Arces[Tmp_P[Cnt-2]][Tmp_P[Cnt-1]].time;
+                            Tmp_C +=  Arces[Tmp_P[Cnt-2]][Tmp_P[Cnt-1]].cost;
                         }
                         catch(const std::exception& e)
                         {
@@ -519,10 +561,11 @@ void gen_data_with_feasibility(config_t config)
                         
                         
 
-                        if (!Arces[Tmp_P[Cnt-2],Tmp_P[Cnt-1]]->key)
+                        if (!Arces[Tmp_P[Cnt-2]][Tmp_P[Cnt-1]].key)
                         {
-                            Arces[Tmp_P[Cnt-2],Tmp_P[Cnt-1]]->key = true;
+                            Arces[Tmp_P[Cnt-2]][Tmp_P[Cnt-1]].key = true;
                             Cnt_arc++;
+                            Cmt++;
                         }
                     }
                 }
@@ -530,6 +573,14 @@ void gen_data_with_feasibility(config_t config)
                 {
                     Tmp_P[Cnt] = Nnodes-1; // ending point
                     Tmp_B[Nnodes-1] = true;
+                    Cnt++;
+
+                    if (!Arces[Tmp_P[Cnt-2]][Tmp_P[Cnt-1]].key)
+                    {
+                        Arces[Tmp_P[Cnt-2]][Tmp_P[Cnt-1]].key = true;
+                        Cnt_arc++;
+                        Cmt++;
+                    }
                 }
                 catch(const std::exception& e)
                 {
@@ -539,12 +590,10 @@ void gen_data_with_feasibility(config_t config)
                 }
                 
                 
-
-                Cnt++;
                 try
                 {
-                    Tmp_T +=  Arces[Tmp_P[Cnt-2],Tmp_P[Cnt-1]]->time;
-                    Tmp_C +=  Arces[Tmp_P[Cnt-2],Tmp_P[Cnt-1]]->cost;
+                    Tmp_T +=  Arces[Tmp_P[Cnt-2]][Tmp_P[Cnt-1]].time;
+                    Tmp_C +=  Arces[Tmp_P[Cnt-2]][Tmp_P[Cnt-1]].cost;
                 }
                 catch(const std::exception& e)
                 {
@@ -555,12 +604,19 @@ void gen_data_with_feasibility(config_t config)
 
                 //checking the path
 
+                // if yes save
                 Tmp_P_O = Tmp_P;
                 Tmp_B_O = Tmp_B;
                 Tmp_C_O = Tmp_C;
                 Tmp_T_O = Tmp_T;
-            } while (false);
+                // else delete
+                //
+                //
+                //
+                //
 
+            } while (false);
+            cout<<"path added!!!"<<endl;
             Fpaths[p] = Tmp_P_O;
             Opaths[p] = Tmp_B_O;
             Tpaths[p] = Tmp_T_O;
@@ -574,21 +630,38 @@ void gen_data_with_feasibility(config_t config)
                 max_path = Tpaths[i];
         
         
+        int T_cnt = 0;
+        for (int i = 0; i < Nnodes; i++)
+        {
+            for (int j = 0; j < Nnodes; j++)
+            {
+                if (Arces[i][j].key)
+                {
+                    T_cnt++;
+                    
+                }
+                
+            }
+            
+        }
+        
+
+
         while (Cnt_arc < Narcs)
         {
             
             int pointA = rand_int_bet(0, Nnodes-1);
             int pointB = rand_int_bet(0, Nnodes-1);
         
-            if (!Arces[pointA,pointB]->key)
+            if (!Arces[pointA][pointB].key)
             {
-                Arces[pointA,pointB]->key = true;
+                Arces[pointA][pointB].key = true;
                 Cnt_arc++;
             }
         }
 
         char name[300];
-        sprintf(name, "%s/CSP-%d-%2d-%d-f.txt", tmp, Nnodes, int(Farcs*100), Instance);
+        sprintf(name, "%s/CSP-%d-%2d-%d-f.txt", tmp_char, Nnodes, int(Farcs*100), Instance);
 
         out.open(name);
 
@@ -605,12 +678,6 @@ void gen_data_with_feasibility(config_t config)
 
         out << "Nodes:  " << Nnodes << endl;
         out << "Narcs:  " << Narcs << endl;
-        
-        int startpoint;
-        int pointA;
-        int pointB;
-
-
         out << "Snode:  " << 0 << endl;
         out << "Enode:  " << Nnodes-1 << endl;
         
@@ -632,6 +699,8 @@ void gen_data_with_feasibility(config_t config)
         }
                 
         out << endl << endl;
+
+
 
         for (int i = 0; i < Nnodes; i++)
         {

@@ -55,7 +55,6 @@ int main(int argc, char** argv)
     // get the configuration, print it
     config_t config;
     parseargs(argc, argv, config);
-    
     config.dump();
 
     try

@@ -112,7 +112,7 @@ float rand_float_bet(float min, float max, int precision)
 }
 
 
-float distance(nodeinfo A, nodeinfo B)
+float distance(nodeinfo const &A, nodeinfo const &B)
 {
     return sqrt(pow((A.x-B.x),2) + pow((A.y-B.y),2));
 }

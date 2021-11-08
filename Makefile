@@ -7,8 +7,19 @@ tmp  := $(shell mkdir -p $(ODIR))
 
 # Basic compiler configuration and flags
 CXX      = g++
-CXXFLAGS = -MMD -ggdb -O3 -std=gnu++14 -m$(BITS) -lemon
+
+d ?= 1
+ifeq ($(d), 1)
+    CXXFLAGS = -MMD -ggdb -O0 -std=gnu++14 -m$(BITS) -lemon
+else
+	CXXFLAGS = -MMD -s -DNDEBUG -O3 -std=gnu++14 -m$(BITS) -lemon
+endif
+
+# flag -g
+# -03 some optimization, dose eliminate some of the codes
+
 LDFLAGS	 = -m$(BITS) -lpthread -lemon
+
 
 # The basenames of the c++ files that this program uses
 CXXFILES = mathmatics generating_data config_t tests exitence index_creator main
@@ -24,8 +35,13 @@ OFILES = $(patsubst %, $(ODIR)/%.o, $(CXXFILES))
 DFILES = $(patsubst %.o, %.d, $(OFILES))
 
 # Default rule builds the executable
-all: $(TARGET) 
+all: print $(TARGET) 
 
+print: 
+	printf '\33c\n'
+	@echo "================================================"
+	@echo $(CXXFLAGS)
+	@echo "================================================"
 # clean up everything by clobbering the output folder
 clean:
 	@echo cleaning up files...
@@ -43,11 +59,12 @@ $(ODIR)/%.o: %.cc
 # Link rule for building the target from .o files
 
 $(TARGET): $(OFILES)
+	
 	@echo [LD] $^ "-->" $@
 	@$(CXX) -o $@ $^ $(LDFLAGS)
 
 # Remember that 'all' and 'clean' aren't real targets
-.PHONY: all clean cleanx
+.PHONY: all clean cleanx print
 
 # https://hiltmon.com/blog/2015/08/01/simple-c-plus-plus-from-makefiles-to-xcode-builds/
 
