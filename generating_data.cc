@@ -612,8 +612,18 @@ void gen_data_with_feasibility(config_t configt, config_d configd)
                 out << setw(5) << Cnt_test;
                 out << setw(5) << i ;
                 out << setw(5) << j ;
+                
+                std::ios cout_state(nullptr);
+                cout_state.copyfmt(out);
+
+                out.setf(ios::fixed);
+                out.setf(ios::showpoint);
+                out.precision(2);
+                
                 out << setw(10) << Arces[i][j].cost ;
                 out << setw(10) << Arces[i][j].time <<endl;
+
+                out.copyfmt(cout_state);
                 Cnt_test++;
             }
         }
@@ -657,10 +667,21 @@ void gen_data_with_feasibility(config_t configt, config_d configd)
         {
             out << setw(4) << p ;
             out << setw(8) << Npaths[p] ;
+
+            std::ios cout_state(nullptr);
+            cout_state.copyfmt(out);
+
+            out.setf(ios::fixed);
+            out.setf(ios::showpoint);
+            out.precision(2);
+            
             out << setw(8) << Tpaths[p] ;
             out << setw(8) << Cpaths[p] ;
-            out << setw(4) << ":" ;
 
+            out.copyfmt(cout_state);
+
+            out << setw(4) << ":" ;
+            
             for (int j = 0; j < Npaths[p]; j++)
             {
                 out << setw(4) << Fpaths[p][j] ;
@@ -675,8 +696,18 @@ void gen_data_with_feasibility(config_t configt, config_d configd)
         for (int n = 0; n < Ntnd; n++)
         {
             out << setw(4) << n ;
+            std::ios cout_state(nullptr);
+            cout_state.copyfmt(out);
+
+            out.setf(ios::fixed);
+            out.setf(ios::showpoint);
+            out.precision(2);
+            
             out << setw(8) << Nodes[n].x ;
             out << setw(8) << Nodes[n].y ;
+
+            out.copyfmt(cout_state);
+       
             out<<endl;
         }
         out.close();

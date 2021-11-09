@@ -12,6 +12,7 @@
         "iostream": "cpp",
         "iomanip": "cpp",
         "fstream": "cpp",
-        "memory": "cpp"
+        "memory": "cpp",
+        "ios": "cpp"
     }
 }

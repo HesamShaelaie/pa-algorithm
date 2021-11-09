@@ -75,7 +75,10 @@ int main(int argc, char** argv)
 
             case 3: //run the algorithm
                 
-                /* code */
+                
+                //Reading data
+                //Testing data
+                //Running algorithm
                 break;
 
             case 4: //run the test
