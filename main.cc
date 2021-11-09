@@ -85,8 +85,7 @@ int main(int argc, char** argv)
                 for (int x = 0; x < configr.Itnd; x++)
                 {
                     cout<<configr.Tadd[x]<<endl;
-                    
-
+                    InstanceInfo *Info = reading(configr.Tadd[x]);
 
                 }
                 

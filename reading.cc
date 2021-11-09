@@ -9,7 +9,7 @@ using namespace std;
 
 #include"reading.h"
 
-InstanceInfo * reading (const char *add_input)
+InstanceInfo* reading (const char *add_input)
 {
 
     InstanceInfo *Info = new InstanceInfo;
@@ -51,9 +51,10 @@ InstanceInfo * reading (const char *add_input)
         input >>Info->arcs[a].cost;
     }
     
-    
+    cout<<Info->arcs[Info->Narcs-1].cost<<endl;
+    exit(12);
 
-
+    return Info;
 
 }
 
