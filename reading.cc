@@ -35,11 +35,24 @@ InstanceInfo * reading (const char *add_input)
     input >> Info->start;
 
     input >> stmp;
-    input >> Info->start;
+    input >> Info->finish;
 
+    input >> stmp;
+    input >> Info->cost;
 
-        
+    Info->all_memory();
+
+    for (int a = 0; a < Info->Narcs; a++)
+    {
+        input >> stmp;
+        input >>Info->arcs[a].st;
+        input >>Info->arcs[a].ed;
+        input >>Info->arcs[a].time;
+        input >>Info->arcs[a].cost;
+    }
     
+    
+
 
 
 }
