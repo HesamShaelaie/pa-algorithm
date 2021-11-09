@@ -49,22 +49,68 @@ struct nodeinfo
 {
     float x;
     float y;
+    int Nnbr;
+    int *next;
     nodeinfo()
     {
         x = -1;
         y = -1;
+        Nnbr = 0;
+        next = nullptr;
     }
+    void all_memory()
+    {
+        next = new int [Nnbr];
+    };
+    void del_memory()
+    {
+        delete[] next;
+        next = nullptr;
+    };
     /* data */
+};
+
+struct pathinfo
+{
+    float cost;
+    float time;
+
+    int npath;
+    int *path;
+    void all_memory()
+    {
+        path = new int [npath];
+    };
+    void del_memory()
+    {
+        delete[] path;
+        path = nullptr;
+    };
 };
 
 struct InstanceInfo
 {
     int Nnodes;
     int Narcs;
-    arcinfo *arcs;
+    int Npaths;
+    float cost;
+
+    arcinfo *arcs = nullptr;
+    nodeinfo *nodes = nullptr;
+
+    void all_memory()
+    {
+        arcs = new arcinfo [Narcs];
+        nodes = new nodeinfo [Nnodes];
+    };
+
+    void del_memory()
+    {
+        delete [] arcs;
+        arcs = nullptr;
+        delete [] nodes;
+        nodes = nullptr;
+    };
 };
-
-
-
 
 #endif
