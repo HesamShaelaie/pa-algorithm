@@ -93,10 +93,22 @@ struct InstanceInfo
     int Nnodes;
     int Narcs;
     int Npaths;
+    int start;
+    int finish;
     float cost;
 
-    arcinfo *arcs = nullptr;
-    nodeinfo *nodes = nullptr;
+    arcinfo *arcs;
+    nodeinfo *nodes;
+    InstanceInfo()
+    {
+        Nnodes = 0;
+        Narcs = 0;
+        Npaths = 0;
+        start = -1;
+        finish = -1;
+        arcs = nullptr;
+        nodes = nullptr;
+    }
 
     void all_memory()
     {

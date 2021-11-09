@@ -22,7 +22,7 @@ LDFLAGS	 = -m$(BITS) -lpthread -lemon
 
 
 # The basenames of the c++ files that this program uses
-CXXFILES = mathmatics generating_data config_t tests exitence index_creator config_d config_r main 
+CXXFILES = mathmatics generating_data config_t tests exitence index_creator config_d config_r reading main 
 
 # The executable we will build
 TARGET = $(ODIR)/Project
@@ -78,7 +78,7 @@ crt2:
 	@./$(ODIR)/Project -m 2 -t 1 -d 1
 
 run:
-	@./$(ODIR)/Project -m 3 -t 1
+	@./$(ODIR)/Project -m 3 -t 1 -d 1
 
 test:
 	@./$(ODIR)/Project -m 4 -t 1

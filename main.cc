@@ -14,6 +14,7 @@
 
 #include "tests.h"
 #include "generating_data.h"
+#include "reading.h"
 
 using namespace lemon;
 using namespace std;
@@ -85,6 +86,8 @@ int main(int argc, char** argv)
                 {
                     cout<<configr.Tadd[x]<<endl;
                     
+
+
                 }
                 
                 //Testing data
