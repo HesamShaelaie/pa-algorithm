@@ -631,37 +631,34 @@ void gen_data_with_feasibility(config_t configt, config_d configd)
         out << endl << endl;
 
 
-
+        
         for (int i = 0; i < Ntnd; i++)
         {
-            bool find_test = false;
+            int nbours=0;
+            for (int j = 0; j < Ntnd; j++)
+                if (Arces[i][j].key)
+                    nbours++;
+                
+
+            
+            out << setw(4) << i << setw(4)<<nbours;
             for (int j = 0; j < Ntnd; j++)
             {
                 if (Arces[i][j].key)
                 {
-                    find_test = true;
+                    out << setw(4) << Arces[i][j].ed;
                 }
                 
             }
-
-            if (find_test)
-            {
-                out << setw(4) << i;
-                for (int j = 0; j < Ntnd; j++)
-                {
-                    if (Arces[i][j].key)
-                    {
-                        out << setw(4) << Arces[i][j].ed;
-                    }
-                    
-                }
-                out<<endl;
-            }
+            out<<endl;
+            
         }
 
         out<<endl;
         out<<endl;
         out<<endl;
+
+        out << Nfpath<<endl;
 
         for (int p = 0; p < Nfpath; p++)
         {
@@ -675,12 +672,10 @@ void gen_data_with_feasibility(config_t configt, config_d configd)
             out.setf(ios::showpoint);
             out.precision(2);
             
-            out << setw(8) << Tpaths[p] ;
-            out << setw(8) << Cpaths[p] ;
+            out << setw(12) << Tpaths[p] ;
+            out << setw(12) << Cpaths[p] ;
 
             out.copyfmt(cout_state);
-
-            out << setw(4) << ":" ;
             
             for (int j = 0; j < Npaths[p]; j++)
             {

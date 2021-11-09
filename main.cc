@@ -7,8 +7,11 @@
 
 
 #include "variables.h"
+
 #include "config_t.h"
 #include "config_d.h"
+#include "config_r.h"
+
 #include "tests.h"
 #include "generating_data.h"
 
@@ -56,6 +59,7 @@ int main(int argc, char** argv)
     // get the configuration, print it
     config_t configt;
     config_d configd;
+    config_r configr;
     parseargs(argc, argv, configt);
     configt.dump();
 
@@ -75,8 +79,14 @@ int main(int argc, char** argv)
 
             case 3: //run the algorithm
                 
-                
                 //Reading data
+                
+                for (int x = 0; x < configr.Itnd; x++)
+                {
+                    cout<<configr.Tadd[x]<<endl;
+                    
+                }
+                
                 //Testing data
                 //Running algorithm
                 break;

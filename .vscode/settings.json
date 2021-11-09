@@ -13,6 +13,8 @@
         "iomanip": "cpp",
         "fstream": "cpp",
         "memory": "cpp",
-        "ios": "cpp"
+        "ios": "cpp",
+        "typeinfo": "cpp",
+        "sstream": "cpp"
     }
 }

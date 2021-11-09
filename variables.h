@@ -57,9 +57,14 @@ struct nodeinfo
     /* data */
 };
 
-struct Feasi
+struct InstanceInfo
 {
-    /* data */
+    int Nnodes;
+    int Narcs;
+    arcinfo *arcs;
 };
+
+
+
 
 #endif

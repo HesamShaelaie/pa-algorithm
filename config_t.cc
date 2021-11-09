@@ -9,13 +9,14 @@
 
 void config_t::dump() 
 {
+    std::cout << "=======================================" << std::endl;
     std::cout << "# mood, threads, testing" << std::endl;
     std::cout << mood << ", " << threads << ", ";
                 if (testing == false)
                     std::cout<< "FALSE" << std::endl;
                 else
                     std::cout<<"TRUE"<<std::endl;
-                
+    std::cout << "=======================================" << std::endl;
 }
 
 #endif
