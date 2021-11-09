@@ -1,5 +1,5 @@
-#ifndef _configuration_c
-#define _configuration_c
+#ifndef _config_t_c
+#define _config_t_c
 
 #include <iostream>
 #include "config_t.h"

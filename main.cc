@@ -8,6 +8,7 @@
 
 #include "variables.h"
 #include "config_t.h"
+#include "config_d.h"
 #include "tests.h"
 #include "generating_data.h"
 
@@ -53,22 +54,23 @@ void parseargs(int argc, char** argv, config_t& cfg) {
 int main(int argc, char** argv) 
 {
     // get the configuration, print it
-    config_t config;
-    parseargs(argc, argv, config);
-    config.dump();
+    config_t configt;
+    config_d configd;
+    parseargs(argc, argv, configt);
+    configt.dump();
 
     try
-    {
-        switch (config.mood)
+    {   
+        switch (configt.mood)
         {
-            
-            
             case 1: //create version one
-                gen_data_without_feasibility(config);
+                configd.write_general_info();
+                gen_data_without_feasibility(configt, configd);
                 break;
 
             case 2: //create version two
-                gen_data_with_feasibility(config);
+                configd.write_general_info();
+                gen_data_with_feasibility(configt, configd);
                 break;
 
             case 3: //run the algorithm
@@ -77,8 +79,8 @@ int main(int argc, char** argv)
                 break;
 
             case 4: //run the test
-                testing(First, &config);
-                testing(Second, &config);
+                testing(First, &configt);
+                testing(Second, &configt);
                 break;
         
         default:

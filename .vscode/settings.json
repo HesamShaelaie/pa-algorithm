@@ -9,6 +9,9 @@
         "__config": "cpp",
         "utility": "cpp",
         "map": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "iomanip": "cpp",
+        "fstream": "cpp",
+        "memory": "cpp"
     }
 }

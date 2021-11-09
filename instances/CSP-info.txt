@@ -1,5 +1,5 @@
  ---------------------------------------------------------- 
-Time:   Mon Nov  8 06:27:39 2021
+Time:   Tue Nov  9 01:23:04 2021
 Ninstance:    10
 Nnode:    100
 Farcs:    0.3
@@ -9,13 +9,13 @@ Cordination_max: 1000
 Tchance: 0.5
 Tless: 0.8
 Tmore: 1.2
-min_on_path: 20
-max_on_path: 60
+Min_on_path: 20
+Max_on_path: 60
 RNeighbor: 30
 Ffpath: 0.5
 Nfpath: 50
  ---------------------------------------------------------- 
-Time:   Mon Nov  8 06:30:46 2021
+Time:   Tue Nov  9 01:24:06 2021
 Ninstance:    10
 Nnode:    100
 Farcs:    0.3
@@ -25,13 +25,13 @@ Cordination_max: 1000
 Tchance: 0.5
 Tless: 0.8
 Tmore: 1.2
-min_on_path: 20
-max_on_path: 60
+Min_on_path: 20
+Max_on_path: 60
 RNeighbor: 30
 Ffpath: 0.5
 Nfpath: 50
  ---------------------------------------------------------- 
-Time:   Mon Nov  8 06:48:32 2021
+Time:   Tue Nov  9 01:25:09 2021
 Ninstance:    10
 Nnode:    100
 Farcs:    0.3
@@ -41,13 +41,13 @@ Cordination_max: 1000
 Tchance: 0.5
 Tless: 0.8
 Tmore: 1.2
-min_on_path: 20
-max_on_path: 60
+Min_on_path: 20
+Max_on_path: 60
 RNeighbor: 30
 Ffpath: 0.5
 Nfpath: 50
  ---------------------------------------------------------- 
-Time:   Mon Nov  8 06:49:22 2021
+Time:   Tue Nov  9 01:30:08 2021
 Ninstance:    10
 Nnode:    100
 Farcs:    0.3
@@ -57,13 +57,13 @@ Cordination_max: 1000
 Tchance: 0.5
 Tless: 0.8
 Tmore: 1.2
-min_on_path: 20
-max_on_path: 60
+Min_on_path: 20
+Max_on_path: 60
 RNeighbor: 30
 Ffpath: 0.5
 Nfpath: 50
  ---------------------------------------------------------- 
-Time:   Mon Nov  8 06:52:26 2021
+Time:   Tue Nov  9 01:31:06 2021
 Ninstance:    10
 Nnode:    100
 Farcs:    0.3
@@ -73,13 +73,13 @@ Cordination_max: 1000
 Tchance: 0.5
 Tless: 0.8
 Tmore: 1.2
-min_on_path: 20
-max_on_path: 60
+Min_on_path: 20
+Max_on_path: 60
 RNeighbor: 30
 Ffpath: 0.5
 Nfpath: 50
  ---------------------------------------------------------- 
-Time:   Mon Nov  8 06:54:17 2021
+Time:   Tue Nov  9 01:32:03 2021
 Ninstance:    10
 Nnode:    100
 Farcs:    0.3
@@ -89,13 +89,13 @@ Cordination_max: 1000
 Tchance: 0.5
 Tless: 0.8
 Tmore: 1.2
-min_on_path: 20
-max_on_path: 60
+Min_on_path: 20
+Max_on_path: 60
 RNeighbor: 30
 Ffpath: 0.5
 Nfpath: 50
  ---------------------------------------------------------- 
-Time:   Mon Nov  8 07:06:24 2021
+Time:   Tue Nov  9 01:32:27 2021
 Ninstance:    10
 Nnode:    100
 Farcs:    0.3
@@ -105,13 +105,13 @@ Cordination_max: 1000
 Tchance: 0.5
 Tless: 0.8
 Tmore: 1.2
-min_on_path: 20
-max_on_path: 60
+Min_on_path: 20
+Max_on_path: 60
 RNeighbor: 30
 Ffpath: 0.5
 Nfpath: 50
  ---------------------------------------------------------- 
-Time:   Mon Nov  8 07:15:30 2021
+Time:   Tue Nov  9 01:33:55 2021
 Ninstance:    10
 Nnode:    100
 Farcs:    0.3
@@ -121,40 +121,8 @@ Cordination_max: 1000
 Tchance: 0.5
 Tless: 0.8
 Tmore: 1.2
-min_on_path: 20
-max_on_path: 60
-RNeighbor: 30
-Ffpath: 0.5
-Nfpath: 50
- ---------------------------------------------------------- 
-Time:   Mon Nov  8 07:26:18 2021
-Ninstance:    10
-Nnode:    100
-Farcs:    0.3
-Narcs:    2970
-Cordination_min: 0
-Cordination_max: 1000
-Tchance: 0.5
-Tless: 0.8
-Tmore: 1.2
-min_on_path: 20
-max_on_path: 60
-RNeighbor: 30
-Ffpath: 0.5
-Nfpath: 50
- ---------------------------------------------------------- 
-Time:   Mon Nov  8 07:33:59 2021
-Ninstance:    10
-Nnode:    100
-Farcs:    0.3
-Narcs:    2970
-Cordination_min: 0
-Cordination_max: 1000
-Tchance: 0.5
-Tless: 0.8
-Tmore: 1.2
-min_on_path: 20
-max_on_path: 60
+Min_on_path: 20
+Max_on_path: 60
 RNeighbor: 30
 Ffpath: 0.5
 Nfpath: 50
