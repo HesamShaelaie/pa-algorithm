@@ -3,6 +3,6 @@
 
 #include"variables.h"
 
-InstanceInfo * reading (const char *);
+InstanceInfo* reading (config_t configt, const char *add_input);
 
 #endif

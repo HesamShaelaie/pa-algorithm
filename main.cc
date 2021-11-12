@@ -13,6 +13,7 @@
 #include "config_r.h"
 
 #include "tests.h"
+#include "inputesting.h"
 #include "generating_data.h"
 #include "reading.h"
 
@@ -80,12 +81,17 @@ int main(int argc, char** argv)
 
             case 3: //run the algorithm
                 
-                //Reading data
+                
                 
                 for (int x = 0; x < configr.Itnd; x++)
                 {
                     cout<<configr.Tadd[x]<<endl;
-                    InstanceInfo *Info = reading(configr.Tadd[x]);
+                    InstanceInfo *Info = reading(configt, configr.Tadd[x]);
+                    
+                    if (configt.testing)
+                        InputTesting(Info);
+                    
+                    
 
                 }
                 

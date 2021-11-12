@@ -6,10 +6,10 @@
 #include<iostream>
 
 using namespace std;
-
+#include"config_t.h"
 #include"reading.h"
 
-InstanceInfo* reading (const char *add_input)
+InstanceInfo* reading (config_t configt, const char *add_input)
 {
 
     InstanceInfo *Info = new InstanceInfo;
@@ -50,9 +50,52 @@ InstanceInfo* reading (const char *add_input)
         input >>Info->arcs[a].time;
         input >>Info->arcs[a].cost;
     }
+
+    if (configt.testing)
+    {
+        Info->all_memory_test_A();
+
+        for (int n = 0; n < Info->Nnodes; n++)
+        {
+            input >> stmp;
+            if (n!= stoi(stmp))
+            {
+                cout<<"n!= atoi(stmp)"<<endl;
+                exit(123);
+            }
+
+            input >> Info->Nnb[n];
+            for (int x = 0; x < Info->Nnb[n]; x++)
+                input>>Info->Nb[n][x];
+        }
+
+
+        input >> Info->Npaths;
+        Info->all_memory_test_B();
+
+
+        for (int p = 0; p < Info->Npaths; p++)
+        {
+            input>>stmp;
+            input>>Info->PathsN[p];
+            input>>Info->PathsT[p];
+            input>>Info->PathsW[p];
+            for (int x = 0; x < Info->PathsN[p]; x++)
+                input>>Info->PathsO[p][x];
+        }
+
+    }
     
-    cout<<Info->arcs[Info->Narcs-1].cost<<endl;
-    exit(12);
+    
+
+
+    // paper 
+    // balas
+    // balas I should genera integer progrram dynamic program. 
+
+    // writing the story
+    // phylosophy for 
+    // repo 
 
     return Info;
 
