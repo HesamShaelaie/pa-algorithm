@@ -7,11 +7,14 @@
 
 using namespace std;
 #include"config_t.h"
+#include"config_r.h"
+
 #include"reading.h"
 
-InstanceInfo* reading (config_t configt, const char *add_input)
+InstanceInfo* reading (const config_t &configt, const config_r &configr, int x)   
 {
 
+    const char *add_input = configr.Tadd[x];
     InstanceInfo *Info = new InstanceInfo;
 
     ifstream input;

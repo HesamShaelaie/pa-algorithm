@@ -108,6 +108,8 @@ struct InstanceInfo
     int **PathsO;
     float *PathsT;
     float *PathsW;
+    bool *Dijk_S[2];
+    float *Dijk_f[2];
 
     InstanceInfo()
     {
@@ -149,6 +151,12 @@ struct InstanceInfo
         nodes = new nodeinfo [Nnodes];
     };
 
+    void all_dijk()
+    {
+        
+
+    }
+
     void all_memory_test_A()
     {
         Nnb = new int [Nnodes];
@@ -181,6 +189,8 @@ struct InstanceInfo
         }
         
     };
+
+
 
     void del_memory()
     {

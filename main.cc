@@ -11,6 +11,7 @@
 #include "config_t.h"
 #include "config_d.h"
 #include "config_r.h"
+#include "pa_algorithm.h"
 
 #include "tests.h"
 #include "inputesting.h"
@@ -85,11 +86,16 @@ int main(int argc, char** argv)
                 
                 for (int x = 0; x < configr.Itnd; x++)
                 {
-                    cout<<configr.Tadd[x]<<endl;
-                    InstanceInfo *Info = reading(configt, configr.Tadd[x]);
+                    cout << configr.Tadd[x] << endl;
+                    InstanceInfo *Info = reading(configt, configr, x);
                     
                     if (configt.testing)
                         InputTesting(Info);
+                    
+
+                    
+
+
                     
                     
 
