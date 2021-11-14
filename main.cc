@@ -83,7 +83,6 @@ int main(int argc, char** argv)
             case 3: //run the algorithm
                 
                 
-                
                 for (int x = 0; x < configr.Itnd; x++)
                 {
                     cout << configr.Tadd[x] << endl;
@@ -91,6 +90,17 @@ int main(int argc, char** argv)
                     
                     if (configt.testing)
                         InputTesting(Info);
+                    
+                    Info->create_map();
+
+                    if (configt.testing)
+                    {
+                        InputTesting(Info);
+                        InputTesting_Find(Info);
+                        InputTesting_FindM(Info);
+                    }
+                    
+
                     
 
                     

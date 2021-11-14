@@ -5,6 +5,7 @@
 
 
 void InputTesting(InstanceInfo *);
-
+void InputTesting_Find(InstanceInfo *Info);
+void InputTesting_FindM(InstanceInfo *Info);
 
 #endif

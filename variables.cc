@@ -109,13 +109,13 @@ InstanceInfo::InstanceInfo()
 
 }
 
-int InstanceInfo::FindEdge(int fm, int to)
+arcinfo * InstanceInfo::FindEdge(int fm, int to)
 {
     int find = -1;
     for (int x = 0; x < Narcs; x++)
     {
         if (fm == arcs[x].st && to == arcs[x].ed)
-            return x;
+            return &arcs[x];
 
         if (fm<arcs[x].st)
             break;
@@ -124,7 +124,7 @@ int InstanceInfo::FindEdge(int fm, int to)
     
     }
     
-    return -1;
+    return nullptr;
 }
 
 
