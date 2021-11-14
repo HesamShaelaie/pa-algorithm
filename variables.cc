@@ -2,9 +2,15 @@
 #define _variabels_c
 
 #include "variables.h"
+#include "index_creator.h"
+
+#include <iostream>
 #include <math.h>
 #include <limits.h>
 #include <map>
+
+using std::endl;
+using std::cout;
 
 arcinfo::arcinfo()
 {
@@ -231,8 +237,57 @@ void InstanceInfo::del_memory()
 
         Dijk_f[0] = nullptr;
         Dijk_f[1] = nullptr;
-    }     
+    }   
+
+    if(!Dic.empty())
+        Dic.clear();
 };
+
+
+arcinfo * InstanceInfo::FindEdgeM(int fm, int to)
+{
+    arcinfo * tmp;
+
+    index = index_creator(Nnodes, fm, to);
+    idx = Dic.find(index);
+
+    if (idx == Dic.end()) 
+    {
+        cout<<"cannot fine the edge!!"<<endl;
+        exit(1113);
+    }
+    else
+       tmp = idx->second;
+
+    return tmp;
+}
+
+void InstanceInfo::create_map()
+{
+    int pointA;
+    int pointB;
+    
+
+    for (int a = 0; a < Narcs; a++)
+    {
+        pointA = arcs[a].st;
+        pointB = arcs[a].ed;
+
+        index = index_creator(Nnodes, pointA, pointB);
+
+        if (Dic.find(index) == Dic.end()) 
+        {
+            arcinfo *tmp_arc;
+            tmp_arc = &arcs[a];
+            Dic[index] = tmp_arc;
+        }
+        else
+        {
+            cout<<"InstanceInfo: section read data."<<endl;
+            cout<<"something wrong at the reading data"<<endl;
+        }
+    }
+}
 
 
 

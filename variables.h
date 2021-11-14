@@ -71,15 +71,21 @@ struct InstanceInfo
     bool *Dijk_S[2];
     float *Dijk_f[2];
     std::map<long long, arcinfo*> Dic;
-
+    std::map<long long, arcinfo*>::iterator idx;
+    long long index;
     InstanceInfo();
     int FindEdge(int fm, int to);
+
+    void create_map();
+    arcinfo * FindEdgeM(int fm, int to);
 
     void all_memory();
     void all_dijk();
     void all_memory_test_A();
     void all_memory_test_B();
     void del_memory();
+
+    
 };
 
 #endif
