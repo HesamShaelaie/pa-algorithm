@@ -1,13 +1,11 @@
-#ifndef _variabels_h
-#define _variabels_h
+#ifndef _variabels_c
+#define _variabels_c
 
+#include "variables.h"
 #include <math.h>
 #include <limits.h>
-
-#define epz 0.0000001
-#define epzv2 0.1
-
 #include <map>
+
 
 struct arcinfo
 {

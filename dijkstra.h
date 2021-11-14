@@ -4,6 +4,6 @@
 
 #include"variables.h"
 
-
+float * Dijkstra(InstanceInfo *Info)
 
 #endif
