@@ -4,6 +4,11 @@
 
 #include"variables.h"
 
-float * Dijkstra(InstanceInfo *Info)
+
+int minDistance(int dist[], bool sptSet[]);
+
+
+float * Dijkstra(InstanceInfo *Info);
+
 
 #endif

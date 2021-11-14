@@ -20,7 +20,7 @@ float * Dijkstra(InstanceInfo *Info)
 {
 
     Info->all_dijk();
-
+    /*
     void dijkstra(int graph[V][V], int src)
     {
         int dist[V]; // The output array.  dist[i] will hold the shortest
@@ -60,7 +60,7 @@ float * Dijkstra(InstanceInfo *Info)
         printSolution(dist);
     }
 
-
+    */
 
 }
 
