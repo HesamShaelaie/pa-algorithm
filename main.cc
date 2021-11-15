@@ -95,6 +95,7 @@ int main(int argc, char** argv)
                     cout << configr.Tname[x] << "::";
                     
 
+
                     InstanceInfo *Info = reading(configt, configr, x);
                     
                     if (configt.testing)
