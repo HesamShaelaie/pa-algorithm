@@ -51,22 +51,18 @@ void Dijkstra(InstanceInfo *Info)
         // Update dist value of the adjacent vertices of the picked vertex.
         for (int v = 0; v < Info->Nnodes; v++)
         {
-
             Keys[0] = !Dij_S[0][v];
             Keys[1] = !Dij_S[1][v];
-
 
             if(Keys[0] && Dij_f[0][u[0]]<std::numeric_limits<float>::max())
                 Keys[0] = true;
             else
                 Keys[0] = false;
 
-
             if(Keys[1] && Dij_f[1][u[1]]<std::numeric_limits<float>::max())
                 Keys[1] = true;
             else
                 Keys[1] = false;
-
 
             tmparc = Info->FindEdgeM(v,u[0]);
 
@@ -77,7 +73,6 @@ void Dijkstra(InstanceInfo *Info)
 
             if(Keys[0] && ((Dij_f[0][u[0]] + tmparc->time) < (Dij_f[0][v])))
                 Dij_f[0][v] = (Dij_f[0][u[0]] + tmparc->time);
-
 
             tmparc = Info->FindEdgeM(v,u[1]);
 

@@ -81,6 +81,13 @@ int main(int argc, char** argv)
                 gen_data_with_feasibility(configt, configd);
                 break;
 
+            case 5: //create version two
+                configd.Ntnd = 10;
+                configd.update();
+                configd.write_general_info();
+                gen_data_with_feasibility(configt, configd);
+                break;
+
             case 3: //run the algorithm
                 
                 

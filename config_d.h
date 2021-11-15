@@ -38,9 +38,14 @@ struct config_d {
     int min_on_path;
     int max_on_path;
 
+    float min_on_pathf;
+    float max_on_pathf;
+
     // neighbor search for the nodes
     float FNeighbor;
     int   NNeighbor;
+
+    
     
     char AddGnInfo[300];
     char Address[300];
@@ -59,8 +64,12 @@ struct config_d {
         Cless = 0.8;
         Cmore = 1.2;
 
-        min_on_path = int(Ntnd*0.2);
-        max_on_path = int(Ntnd*0.6);
+        min_on_pathf = 0.2;
+        max_on_pathf = 0.6;
+
+        min_on_path = int(Ntnd*min_on_pathf);
+        max_on_path = int(Ntnd*max_on_pathf);
+        
         FNeighbor = 0.3;
         NNeighbor = int(FNeighbor*Ntnd);
 

@@ -77,6 +77,9 @@ crt1:
 crt2:
 	@./$(ODIR)/Project -m 2 -t 1 -d 1
 
+crt3:
+	@./$(ODIR)/Project -m 5 -t 1 -d 1
+
 run:
 	@./$(ODIR)/Project -m 3 -t 1 -d 1
 

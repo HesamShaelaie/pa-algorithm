@@ -57,8 +57,8 @@ void config_d::update()
 {
     Narcs = int(Permutation(Ntnd, 2)*Farcs);
     Nfpath = int(Ffpath * Ntnd);
-    min_on_path = int(Ntnd*0.2);
-    max_on_path = int(Ntnd*0.3);
+    min_on_path = int(Ntnd*max_on_pathf);
+    max_on_path = int(Ntnd*max_on_pathf);
     NNeighbor = int(FNeighbor*Ntnd);
 }
 #endif
