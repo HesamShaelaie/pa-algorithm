@@ -4,8 +4,11 @@
 
 #include<fstream>
 #include<iostream>
+#include<string>
+#include<stdio.h>
 
 using namespace std;
+
 #include"config_t.h"
 #include"config_r.h"
 
@@ -16,6 +19,9 @@ InstanceInfo* reading (const config_t &configt, const config_r &configr, int x)
 
     const char *add_input = configr.Tadd[x];
     InstanceInfo *Info = new InstanceInfo;
+    
+    strncpy(Info->name , configr.Tname[x],300);
+    strncpy(Info->add_out , configr.address_out,300);
 
     ifstream input;
     input.open(add_input);
@@ -86,12 +92,9 @@ InstanceInfo* reading (const config_t &configt, const config_r &configr, int x)
             for (int x = 0; x < Info->PathsN[p]; x++)
                 input>>Info->PathsO[p][x];
         }
-
+        
     }
     
-    
-
-
     // paper 
     // balas
     // balas I should genera integer progrram dynamic program. 

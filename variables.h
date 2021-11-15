@@ -70,6 +70,9 @@ struct InstanceInfo
     float *PathsW;
     bool *Dijk_S[2];
     float *Dijk_f[2];
+    char add_out[300];
+    char name[300];
+    char Dijk_name[300];
     
     std::map<long long, arcinfo*> Dic;
     std::map<long long, arcinfo*>::iterator idx;
@@ -82,7 +85,7 @@ struct InstanceInfo
     arcinfo * FindEdge(int fm, int to);
     arcinfo * FindEdgeM(int fm, int to);
     
-    
+    void dump_dijk();
     void all_memory();
     void all_dijk();
     void all_memory_test_A();

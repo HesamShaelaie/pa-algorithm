@@ -10,6 +10,7 @@
 struct config_r 
 {
     char address[300];
+    char address_out[300];
     int Inst_s;
     int Inst_f;
     int Ntnd;
@@ -17,6 +18,7 @@ struct config_r
 
     int Itnd;
     char Tadd[MAXINSTANCE][300];
+    char Tname[MAXINSTANCE][300];
     config_r()
     {
         Inst_s = 0;
@@ -25,6 +27,8 @@ struct config_r
         Farc = 30;
         getcwd(address,256); // getting the folder of the codes
         strcat(address, "/instances"); // add the instance to the address
+        strcat(address_out, "/output"); // add the instance to the address
+
         update();
     }
 

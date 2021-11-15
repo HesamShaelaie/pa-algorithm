@@ -3,14 +3,19 @@
 
 #include "variables.h"
 #include "index_creator.h"
+#include"exitence.h"
 
 #include <iostream>
 #include <math.h>
 #include <limits.h>
 #include <map>
+#include <fstream>
+#include <sys/stat.h>
+#include <iomanip>
 
 using std::endl;
 using std::cout;
+using std::setw;
 
 arcinfo::arcinfo()
 {
@@ -285,6 +290,32 @@ void InstanceInfo::create_map()
     }
 }
 
+void InstanceInfo::dump_dijk()
+{
 
+    sprintf(Dijk_name, "%s/%s-D.txt",add_out,name);
+    if (!exists(add_out))
+        mkdir(add_out,0777);
+    
+    std::ofstream out;
+    out.open(Dijk_name);
+
+    if(!out)
+    {
+        cout<<"cannot write dijk!!"<<endl;
+        exit(11);
+    }    
+
+
+    for (int n = 0; n < Nnodes; n++)
+    {
+        out << setw(4) << n;
+        out << setw(4) << Dijk_S[0];
+        out << setw(4) << Dijk_S[1];
+        out << setw(4) << Dijk_f[0];
+        out << setw(4) << Dijk_f[1];
+        out << endl;
+    }    
+}
 
 #endif

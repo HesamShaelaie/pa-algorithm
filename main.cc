@@ -90,10 +90,9 @@ int main(int argc, char** argv)
 
             case 3: //run the algorithm
                 
-                
                 for (int x = 0; x < configr.Itnd; x++)
                 {
-                    cout << configr.Tadd[x] << endl;
+                    cout << configr.Tname[x] << ":";
                     InstanceInfo *Info = reading(configt, configr, x);
                     
                     if (configt.testing)
@@ -109,8 +108,12 @@ int main(int argc, char** argv)
                     }
                     
                     Dijkstra(Info);
+                    Info->dump_dijk();
+                    
+                    //https://www.geeksforgeeks.org/draw-line-c-graphics/
 
 
+                    cout << "   OK!"<<endl;
                 }
                 
                 //Testing data
