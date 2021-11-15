@@ -109,23 +109,6 @@ InstanceInfo::InstanceInfo()
 
 }
 
-arcinfo * InstanceInfo::FindEdge(int fm, int to)
-{
-    int find = -1;
-    for (int x = 0; x < Narcs; x++)
-    {
-        if (fm == arcs[x].st && to == arcs[x].ed)
-            return &arcs[x];
-
-        if (fm<arcs[x].st)
-            break;
-        else if(fm ==arcs[x].st && to < arcs[x].ed)
-            break;
-    
-    }
-    
-    return nullptr;
-}
 
 
 void InstanceInfo::all_memory()
@@ -244,22 +227,35 @@ void InstanceInfo::del_memory()
 };
 
 
+
+arcinfo * InstanceInfo::FindEdge(int fm, int to)
+{
+    int find = -1;
+    for (int x = 0; x < Narcs; x++)
+    {
+        if (fm == arcs[x].st && to == arcs[x].ed)
+            return &arcs[x];
+
+        if (fm<arcs[x].st)
+            break;
+        else if(fm ==arcs[x].st && to < arcs[x].ed)
+            break;
+    
+    }
+    
+    return nullptr;
+}
+
 arcinfo * InstanceInfo::FindEdgeM(int fm, int to)
 {
-    arcinfo * tmp;
 
     index = index_creator(Nnodes, fm, to);
     idx = Dic.find(index);
 
     if (idx == Dic.end()) 
-    {
-        cout<<"cannot fine the edge!!"<<endl;
-        exit(1113);
-    }
+        return nullptr;
     else
-       tmp = idx->second;
-
-    return tmp;
+        return idx->second;
 }
 
 void InstanceInfo::create_map()

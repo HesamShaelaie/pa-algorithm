@@ -70,10 +70,11 @@ struct InstanceInfo
     float *PathsW;
     bool *Dijk_S[2];
     float *Dijk_f[2];
+    
     std::map<long long, arcinfo*> Dic;
     std::map<long long, arcinfo*>::iterator idx;
     long long index;
-    
+
     InstanceInfo();
     
     void create_map();
@@ -87,8 +88,6 @@ struct InstanceInfo
     void all_memory_test_A();
     void all_memory_test_B();
     void del_memory();
-
-
 };
 
 #endif

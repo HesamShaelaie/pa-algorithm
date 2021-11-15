@@ -3,65 +3,81 @@
 
 #include"variables.h"
 
-int minDistance(int dist[], bool sptSet[])
+int minDistance(int Nnodes, float dist[], bool sptSet[])
 {
    
     // Initialize min value
-    int min = INT_MAX, min_index;
+    float min = std::numeric_limits<float>::max();
+    int min_index;
  
-    for (int v = 0; v < V; v++)
+    for (int v = 0; v < Nnodes; v++)
         if (sptSet[v] == false && dist[v] <= min)
             min = dist[v], min_index = v;
  
     return min_index;
 }
 
-float * Dijkstra(InstanceInfo *Info)
+void Dijkstra(InstanceInfo *Info)
 {
-
     Info->all_dijk();
-    /*
-    void dijkstra(int graph[V][V], int src)
+    
+    bool *Dij_S[2];
+    float *Dij_f[2];
+    
+    Dij_S[0] = Info->Dijk_S[0]; // 0 -> time
+    Dij_S[1] = Info->Dijk_S[1]; // 1 -> weight
+
+    Dij_f[0] = Info->Dijk_f[0];
+    Dij_f[1] = Info->Dijk_f[1];
+
+    int u[2];
+
+    int st = Info->finish;
+    Dij_f[0][st] = 0;
+    Dij_f[1][st] = 0;
+    
+    bool Keys[2];
+    arcinfo * tmparc;
+
+    for (int count = 0; count < (Info->Nnodes - 1); count++) 
     {
-        int dist[V]; // The output array.  dist[i] will hold the shortest
-        // distance from src to i
-    
-        bool sptSet[V]; // sptSet[i] will be true if vertex i is included in shortest
-        // path tree or shortest distance from src to i is finalized
-    
-        // Initialize all distances as INFINITE and stpSet[] as false
-        for (int i = 0; i < V; i++)
-            dist[i] = INT_MAX, sptSet[i] = false;
-    
-        // Distance of source vertex from itself is always 0
-        dist[src] = 0;
-    
-        // Find shortest path for all vertices
-        for (int count = 0; count < V - 1; count++) {
-            // Pick the minimum distance vertex from the set of vertices not
-            // yet processed. u is always equal to src in the first iteration.
-            int u = minDistance(dist, sptSet);
-    
-            // Mark the picked vertex as processed
-            sptSet[u] = true;
-    
-            // Update dist value of the adjacent vertices of the picked vertex.
-            for (int v = 0; v < V; v++)
-    
-                // Update dist[v] only if is not in sptSet, there is an edge from
-                // u to v, and total weight of path from src to  v through u is
-                // smaller than current value of dist[v]
-                if (!sptSet[v] && graph[u][v] && dist[u] != INT_MAX
-                    && dist[u] + graph[u][v] < dist[v])
-                    dist[v] = dist[u] + graph[u][v];
+        // number of constraints
+        u[0] = minDistance(Info->Nnodes, Dij_f[0], Dij_S[0]);
+        u[1] = minDistance(Info->Nnodes, Dij_f[1], Dij_S[1]);
+
+        Dij_S[0][u[0]] = true;
+        Dij_S[1][u[1]] = true;
+
+        // Update dist value of the adjacent vertices of the picked vertex.
+        for (int v = 0; v < Info->Nnodes; v++)
+        {
+
+            Keys[0] = !Dij_S[0][v];
+            Keys[1] = !Dij_S[1][v];
+
+
+            if(Keys[0] && Dij_f[0][u[0]]<std::numeric_limits<float>::max())
+                Keys[0] = true;
+            else
+                Keys[0] = false;
+
+
+            if(Keys[1] && Dij_f[1][u[1]]<std::numeric_limits<float>::max())
+                Keys[1] = true;
+            else
+                Keys[1] = false;
+
+
+            tmparc = Info->FindEdgeM(v,u[0]);
+            if(Keys[0] && ((Dij_f[0][u[0]] + tmparc->time) < (Dij_f[0][v])))
+                Dij_f[0][v] = (Dij_f[0][u[0]] + tmparc->time);
+
+
+            tmparc = Info->FindEdgeM(v,u[1]);
+            if(Keys[1] && ((Dij_f[1][u[1]] + tmparc->cost) < (Dij_f[1][v])))
+                Dij_f[1][v] = (Dij_f[1][u[1]] + tmparc->cost);
         }
-    
-        // print the constructed distance array
-        printSolution(dist);
     }
-
-    */
-
 }
 
 #endif

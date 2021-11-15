@@ -5,10 +5,8 @@
 #include"variables.h"
 
 
-int minDistance(int dist[], bool sptSet[]);
-
-
-float * Dijkstra(InstanceInfo *Info);
+int minDistance(int Nnodes, int dist[], bool sptSet[]);
+void Dijkstra(InstanceInfo *Info);
 
 
 #endif

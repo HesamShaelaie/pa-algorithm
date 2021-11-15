@@ -12,6 +12,7 @@
 #include "config_d.h"
 #include "config_r.h"
 #include "pa_algorithm.h"
+#include "dijkstra.h"
 
 #include "tests.h"
 #include "inputesting.h"
@@ -100,14 +101,8 @@ int main(int argc, char** argv)
                         InputTesting_FindM(Info);
                     }
                     
+                    Dijkstra(Info);
 
-                    
-
-                    
-
-
-                    
-                    
 
                 }
                 
