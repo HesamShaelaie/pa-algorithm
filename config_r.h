@@ -23,8 +23,9 @@ struct config_r
     {
         Inst_s = 0;
         Inst_f = 10; //not included
-        Ntnd = 100;
+        Ntnd = 10;
         Farc = 30;
+        
         getcwd(address,256); // getting the folder of the codes
         strcat(address, "/instances"); // add the instance to the address
         strcat(address_out, "/output"); // add the instance to the address

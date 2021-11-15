@@ -92,7 +92,9 @@ int main(int argc, char** argv)
                 
                 for (int x = 0; x < configr.Itnd; x++)
                 {
-                    cout << configr.Tname[x] << ":";
+                    cout << configr.Tname[x] << "::";
+                    
+
                     InstanceInfo *Info = reading(configt, configr, x);
                     
                     if (configt.testing)

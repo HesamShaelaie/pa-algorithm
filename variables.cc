@@ -318,4 +318,7 @@ void InstanceInfo::dump_dijk()
     }    
 }
 
+// we saw numbers aling the way but we did not track them
+// give you an enalogy 
+
 #endif
