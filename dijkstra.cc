@@ -69,11 +69,23 @@ void Dijkstra(InstanceInfo *Info)
 
 
             tmparc = Info->FindEdgeM(v,u[0]);
+
+            if(Keys[0] && tmparc)
+                Keys[0] = true;
+            else
+                Keys[0] = false;
+
             if(Keys[0] && ((Dij_f[0][u[0]] + tmparc->time) < (Dij_f[0][v])))
                 Dij_f[0][v] = (Dij_f[0][u[0]] + tmparc->time);
 
 
             tmparc = Info->FindEdgeM(v,u[1]);
+
+            if(Keys[1] && tmparc)
+                Keys[1] = true;
+            else
+                Keys[1] = false;
+
             if(Keys[1] && ((Dij_f[1][u[1]] + tmparc->cost) < (Dij_f[1][v])))
                 Dij_f[1][v] = (Dij_f[1][u[1]] + tmparc->cost);
         }
