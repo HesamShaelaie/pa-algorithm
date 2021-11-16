@@ -13,8 +13,10 @@
 void Solve_PA(InstanceInfo *Info)
 {
     int st = Info->start;
+    int fn = Info->finish;
     traverseinfo * start = new traverseinfo (Info->Nnodes, &Info->nodes[st]);
     start->SltN++;
+    start->allocate();
     start->SltB[st] = true;
     start->SltL[0]  = st;
     traverseinfo * tmp;
@@ -29,15 +31,34 @@ void Solve_PA(InstanceInfo *Info)
 
     while (start)
     {
-        //check start
-        // if pruned substitude
-        // else continue start
+        if ( start->lable <  start->Node->lable)
+            start->Node->lable = start->lable;
+        
+        
+        if (start->Node->index==fn)
+        {
+            if(start->obj<Upper)
+            {
+               Upper = start->obj;
+               Info->sol_obj = start->obj;
+               Info->sol_n = start->SltN;
+               for (int k = 0; k < start->SltN; k++)
+                   Info->sol_path[k] = start->SltL[k];
+            }
 
+            tmp = start->next;
+            start->deallocate();
+            delete start;
+            start = tmp;
+            continue;
+        }
+        
         //prune rule one
         if (start->lable >  start->Node->lable)
         {
             tmp = start->next;
             start->deallocate();
+            delete start;
             start = tmp;
             continue;
         }
@@ -47,6 +68,7 @@ void Solve_PA(InstanceInfo *Info)
         {
             tmp = start->next;
             start->deallocate();
+            delete start;
             start = tmp;
             continue;
         }
@@ -54,25 +76,22 @@ void Solve_PA(InstanceInfo *Info)
 
         //prune rule three
         fr = start->Node->index;
-        if (start->lable.time > Info->Dijk_f[Time][fr])
+        if ((start->lable.time + Info->Dijk_f[Time][fr]) > Info->cost)
         {
             tmp = start->next;
             start->deallocate();
+            delete start;
             start = tmp;
             continue;
         }
-
-
-        if ( start->lable <  start->Node->lable)
-            start->Node->lable = start->lable;
-        
 
         tmpnode = start -> Node;
         keyfirst = false;
 
         for (int x = 0; x < tmpnode->Nnbr ; x++)
         {
-            if (!start->SltB[x])
+            to = tmpnode->nbr[x]; 
+            if (!start->SltB[to])
             {
                 if (!keyfirst)
                 {
@@ -81,10 +100,9 @@ void Solve_PA(InstanceInfo *Info)
                     /* code */
                 }else
                 {
-                    to = tmpnode->nbr[x];
                     tmparc = Info->FindEdgeM(fr,to);
                     tmp = new traverseinfo(Info->Nnodes, &Info->nodes[to]);
-
+                    tmp->allocate();
                     tmp->lable = start->lable;
                     tmp->lable += tmparc;
                     tmp->obj = start->obj + tmparc->cost;
@@ -108,6 +126,7 @@ void Solve_PA(InstanceInfo *Info)
         {
             to = tmpnode->nbr[saveindex];
             tmparc = Info->FindEdgeM(fr,to);
+            start->Node = &Info->nodes[to];
             start->lable += tmparc;
             start->obj = start->obj + tmparc->cost;  
             start->SltN++;
@@ -115,7 +134,6 @@ void Solve_PA(InstanceInfo *Info)
             start->SltL[to] = true;
         }
     }
-    
 }
 
 #endif

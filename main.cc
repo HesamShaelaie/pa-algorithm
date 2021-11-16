@@ -18,6 +18,8 @@
 #include "inputesting.h"
 #include "generating_data.h"
 #include "reading.h"
+#include "printout.h"
+
 
 using namespace lemon;
 using namespace std;
@@ -119,6 +121,8 @@ int main(int argc, char** argv)
                         Info->dump_dijk();
 
                     Solve_PA(Info);
+
+
                     
                     
                     //https://www.geeksforgeeks.org/draw-line-c-graphics/

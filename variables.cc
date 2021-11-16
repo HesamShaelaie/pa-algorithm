@@ -100,7 +100,12 @@ InstanceInfo::InstanceInfo()
     finish = -1;
     arcs = nullptr;
     nodes = nullptr;
-    
+
+    sol_n = 0;
+    sol_obj = 0;
+    sol_path = nullptr;
+
+
     PathsN = nullptr;
     PathsO = nullptr;
     PathsT = nullptr;
@@ -119,6 +124,7 @@ void InstanceInfo::all_memory()
 {
     arcs = new arcinfo [Narcs];
     nodes = new nodeinfo [Nnodes];
+    sol_path = new int [Nnodes];
 };
 
 void InstanceInfo::all_dijk()
@@ -223,6 +229,11 @@ void InstanceInfo::del_memory()
     if(!Dic.empty())
         Dic.clear();
 
+    if (!sol_path)
+    {
+        delete[] sol_path;
+        sol_path = nullptr;
+    }
 };
 
 

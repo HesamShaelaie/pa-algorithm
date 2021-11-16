@@ -92,9 +92,18 @@ InstanceInfo* reading (const config_t &configt, const config_r &configr, int x)
             for (int x = 0; x < Info->PathsN[p]; x++)
                 input>>Info->PathsO[p][x];
         }
+
+
+        for (int p = 0; p < Info->Nnodes; p++)
+        {
+            input>>stmp;
+            input>>Info->nodes[p].x;
+            input>>Info->nodes[p].y;
+        }
         
     }
     
+    input.close();
     // paper 
     // balas
     // balas I should genera integer progrram dynamic program. 

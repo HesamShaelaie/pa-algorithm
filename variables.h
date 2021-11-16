@@ -86,6 +86,10 @@ struct InstanceInfo
     int finish;
     float cost;
 
+    float sol_obj;
+    int *sol_path;
+    int sol_n;
+
     arcinfo *arcs;
     nodeinfo *nodes;
 

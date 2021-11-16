@@ -22,7 +22,7 @@ LDFLAGS	 = -m$(BITS) -lpthread -lemon
 
 
 # The basenames of the c++ files that this program uses
-CXXFILES = variables mathmatics generating_data config_t tests exitence index_creator config_d config_r reading inputesting pa_algorithm dijkstra main 
+CXXFILES = variables mathmatics generating_data config_t tests exitence index_creator config_d config_r reading inputesting pa_algorithm dijkstra printout main 
 
 # The executable we will build
 TARGET = $(ODIR)/Project
