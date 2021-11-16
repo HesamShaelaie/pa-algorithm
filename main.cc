@@ -121,14 +121,11 @@ int main(int argc, char** argv)
                         Info->dump_dijk();
 
                     Solve_PA(Info);
-
-
-                    
+                    PrintSolution(Info);
+                    Info->del_memory();
                     
                     //https://www.geeksforgeeks.org/draw-line-c-graphics/
                     //https://www.youtube.com/watch?v=Dyz9O7s7B8w  installing sdl2
-
-
 
                     cout << "   OK!"<<endl;
                 }

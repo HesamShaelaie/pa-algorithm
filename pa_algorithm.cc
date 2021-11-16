@@ -109,8 +109,9 @@ void Solve_PA(InstanceInfo *Info)
                     tmp->SltN = start->SltN;
                     for (int y = 0; y < tmp->SltN; y++)
                         tmp->SltL[y] = start->SltL[y];
-                    tmp->SltN++;
+                    
                     tmp->SltL[tmp->SltN] = to;
+                    tmp->SltN++;
 
                     for (int y = 0; y < start->Nnodes; y++)
                         tmp->SltB[y] = start->SltB[y];
@@ -129,8 +130,10 @@ void Solve_PA(InstanceInfo *Info)
             start->Node = &Info->nodes[to];
             start->lable += tmparc;
             start->obj = start->obj + tmparc->cost;  
-            start->SltN++;
+            
             start->SltL[start->SltN] = to;
+            start->SltN++;
+            
             start->SltL[to] = true;
         }
     }
