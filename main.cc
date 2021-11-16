@@ -114,10 +114,17 @@ int main(int argc, char** argv)
                     }
                     
                     Dijkstra(Info);
-                    Info->dump_dijk();
+
+                    if (configt.testing)
+                        Info->dump_dijk();
+
+                    Solve_PA(Info);
+                    
                     
                     //https://www.geeksforgeeks.org/draw-line-c-graphics/
-                    //https://www.youtube.com/watch?v=Dyz9O7s7B8w
+                    //https://www.youtube.com/watch?v=Dyz9O7s7B8w  installing sdl2
+
+
 
                     cout << "   OK!"<<endl;
                 }

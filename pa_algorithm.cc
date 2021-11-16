@@ -2,13 +2,18 @@
 #define _pa_algorithm_c
 
 #include "pa_algorithm.h"
-#include "dijkstra.h"
+
+// Time is 0
+// Cost is 1
+
+// Constraint is on time
+
 
 
 void Solve_PA(InstanceInfo *Info)
 {
-    //convert to lemon
-    //solver the 
+    
+
     
 
     

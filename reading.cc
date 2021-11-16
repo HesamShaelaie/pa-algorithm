@@ -60,28 +60,28 @@ InstanceInfo* reading (const config_t &configt, const config_r &configr, int x)
         input >>Info->arcs[a].cost;
     }
 
-    if (configt.testing)
+    Info->all_node();
+    for (int n = 0; n < Info->Nnodes; n++)
     {
-        Info->all_memory_test_A();
-
-        for (int n = 0; n < Info->Nnodes; n++)
+        input >> stmp;
+        if (n!= stoi(stmp))
         {
-            input >> stmp;
-            if (n!= stoi(stmp))
-            {
-                cout<<"n!= atoi(stmp)"<<endl;
-                exit(123);
-            }
-
-            input >> Info->Nnb[n];
-            for (int x = 0; x < Info->Nnb[n]; x++)
-                input>>Info->Nb[n][x];
+            cout<<"n!= atoi(stmp)"<<endl;
+            exit(123);
         }
 
+        input >> Info->nodes[n].Nnbr;
+        Info->nodes[n].all_memory();
 
+        for (int x = 0; x < Info->nodes[n].Nnbr; x++)
+            input >> Info->nodes[n].nbr[x];
+    }
+
+
+    if (configt.testing)
+    {
         input >> Info->Npaths;
         Info->all_memory_test_B();
-
 
         for (int p = 0; p < Info->Npaths; p++)
         {

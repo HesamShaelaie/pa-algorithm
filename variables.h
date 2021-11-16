@@ -9,6 +9,10 @@
 
 #include <map>
 
+
+enum TypeOfConstraint{Time, Weight};
+
+
 struct arcinfo
 {
     bool key;
@@ -25,12 +29,22 @@ struct arcinfo
 
 };
 
+
+struct lableinfo
+{
+    float time;
+    float cost;
+    lableinfo();
+};
+
+
 struct nodeinfo
 {
     float x;
     float y;
     int Nnbr;
-    int *next;
+    int *nbr;
+    lableinfo lable;
     
     nodeinfo();
     void all_memory();
@@ -49,6 +63,7 @@ struct pathinfo
     void del_memory();
 };
 
+
 struct InstanceInfo
 {
     int Nnodes;
@@ -60,8 +75,6 @@ struct InstanceInfo
 
     arcinfo *arcs;
     nodeinfo *nodes;
-    int *Nnb;
-    int **Nb;
 
     int Npaths;
     int *PathsN;
@@ -78,6 +91,11 @@ struct InstanceInfo
     std::map<long long, arcinfo*>::iterator idx;
     long long index;
 
+
+
+    // solution variables
+    float SolF;
+
     InstanceInfo();
     
     void create_map();
@@ -88,9 +106,16 @@ struct InstanceInfo
     void dump_dijk();
     void all_memory();
     void all_dijk();
-    void all_memory_test_A();
+    void all_node();
     void all_memory_test_B();
     void del_memory();
 };
+
+
+struct traverseinfo
+{
+    /* data */
+};
+
 
 #endif

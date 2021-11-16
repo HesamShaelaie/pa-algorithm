@@ -58,19 +58,18 @@ nodeinfo::nodeinfo()
     x = -1;
     y = -1;
     Nnbr = 0;
-    next = nullptr;
-
+    nbr = nullptr;
 }
 
 void nodeinfo::all_memory()
 {
-    next = new int [Nnbr];
+    nbr = new int [Nnbr];
 };
 
 void nodeinfo::del_memory()
 {
-    delete[] next;
-    next = nullptr;
+    delete[] nbr;
+    nbr = nullptr;
 };
 
 pathinfo::pathinfo()
@@ -101,7 +100,8 @@ InstanceInfo::InstanceInfo()
     finish = -1;
     arcs = nullptr;
     nodes = nullptr;
-    Nnb = nullptr;
+    SolF = 0;
+    
     PathsN = nullptr;
     PathsO = nullptr;
     PathsT = nullptr;
@@ -111,7 +111,7 @@ InstanceInfo::InstanceInfo()
     Dijk_S[1] = nullptr;
     Dijk_f[0] = nullptr;
     Dijk_f[1] = nullptr;
-
+    
 }
 
 
@@ -139,17 +139,10 @@ void InstanceInfo::all_dijk()
     }
 }
 
-void InstanceInfo::all_memory_test_A()
+void InstanceInfo::all_node()
 {
-    Nnb = new int [Nnodes];
-    Nb = new int *[Nnodes];
-    for (int n = 0; n < Nnodes; n++)
-    {
-        Nb[n] = new int [Nnodes];
-        for (int x = 0; x < Nnodes; x++)
-            Nb[n][x] = -1;
-    }
-    
+    nodes = new nodeinfo [Nnodes];
+
 };
 
 
@@ -188,15 +181,16 @@ void InstanceInfo::del_memory()
         nodes = nullptr;
     }
     
-    if (!Nnb)
+    if (!nodes)
     {   
-        for (int n = 0; n < Nnodes; n++)
-            delete Nb[n];
-
-        delete [] Nnb;
-        Nnb = nullptr;
-        delete [] Nb;
-        Nb = nullptr;
+        for (int N = 0; N < Nnodes; N++)
+        {
+            if (nodes[N].Nnbr)
+                delete[] nodes[N].nbr;
+        }
+        
+        delete[] nodes;
+        nodes = nullptr;
     }
 
     if (!PathsN)
@@ -229,6 +223,7 @@ void InstanceInfo::del_memory()
 
     if(!Dic.empty())
         Dic.clear();
+
 };
 
 
@@ -308,6 +303,12 @@ void InstanceInfo::dump_dijk()
     }    
 
 
+    out << setw(4) << "#";
+    out << setw(10) << "TimeS";
+    out << setw(10) << "CostS";
+    out << setw(15) << "Time";
+    out << setw(15) << "Cost"<<endl<<endl;
+
     for (int n = 0; n < Nnodes; n++)
     {
         out << setw(4) << n;
@@ -317,6 +318,17 @@ void InstanceInfo::dump_dijk()
         out << setw(15) << Dijk_f[1][n];
         out << endl;
     }    
+}
+
+lableinfo::lableinfo()
+{
+    time =0;
+    cost =0;
+}
+
+void InstanceInfo::all_sol()
+{
+    Lables = new lableinfo [Nnodes];
 }
 
 // we saw numbers aling the way but we did not track them
