@@ -100,7 +100,6 @@ InstanceInfo::InstanceInfo()
     finish = -1;
     arcs = nullptr;
     nodes = nullptr;
-    SolF = 0;
     
     PathsN = nullptr;
     PathsO = nullptr;
@@ -321,17 +320,69 @@ void InstanceInfo::dump_dijk()
 }
 
 lableinfo::lableinfo()
-{
-    time =0;
-    cost =0;
+{    
+    time = std::numeric_limits<float>::max();
+    cost = std::numeric_limits<float>::max();
 }
 
-void InstanceInfo::all_sol()
+bool lableinfo::operator < (const lableinfo& rhs) const
 {
-    Lables = new lableinfo [Nnodes];
+    if (time< rhs.time && cost< rhs.cost)
+        return true;
+    else
+        return false;
 }
+
+bool lableinfo::operator > (const lableinfo& rhs) const
+{
+    if (time> rhs.time && cost> rhs.cost)
+        return true;
+    else
+        return false;
+}
+
+bool lableinfo::operator == (const lableinfo& rhs) const
+{
+    if (time == rhs.time && cost == rhs.cost)
+        return true;
+    else
+        return false;
+}
+
 
 // we saw numbers aling the way but we did not track them
 // give you an enalogy 
+// cannot think of it on spot
+
+
+traverseinfo::traverseinfo(int N, nodeinfo *Nd)
+{
+    SltB = nullptr;
+    SltL = nullptr;
+    SltN =0;
+    next = nullptr;
+    Nnodes = N;
+    Node = Nd;
+    lable.cost = 0;
+    lable.time = 0;
+    obj =0;
+}
+
+void traverseinfo::allocate()
+{
+    SltB = new bool [Nnodes];
+    SltL = new int [Nnodes];
+    
+}
+
+void traverseinfo::deallocate()
+{
+    delete[] SltB;
+    delete[] SltL;
+    SltB = nullptr;
+    SltL = nullptr;
+}
+
+
 
 #endif

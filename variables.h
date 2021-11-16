@@ -7,6 +7,9 @@
 #define epz 0.0000001
 #define epzv2 0.1
 
+#define MAX 1
+#define MIN 0
+
 #include <map>
 
 
@@ -35,11 +38,15 @@ struct lableinfo
     float time;
     float cost;
     lableinfo();
+    bool operator < (const lableinfo& rhs) const;
+    bool operator > (const lableinfo& rhs) const;
+    bool operator == (const lableinfo& rhs) const;
 };
 
 
 struct nodeinfo
 {
+    int index;
     float x;
     float y;
     int Nnbr;
@@ -114,7 +121,19 @@ struct InstanceInfo
 
 struct traverseinfo
 {
-    /* data */
+    bool *SltB;
+    int SltN;
+    int *SltL;
+    float obj;
+    
+    lableinfo lable;
+    traverseinfo *next;
+    int Nnodes;
+    nodeinfo *Node;
+
+    traverseinfo(int N, nodeinfo *Nd);
+    void allocate();
+    void deallocate();
 };
 
 

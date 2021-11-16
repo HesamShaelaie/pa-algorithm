@@ -63,8 +63,8 @@ InstanceInfo* reading (const config_t &configt, const config_r &configr, int x)
     Info->all_node();
     for (int n = 0; n < Info->Nnodes; n++)
     {
-        input >> stmp;
-        if (n!= stoi(stmp))
+        input >> Info->nodes[n].index;
+        if (n!= Info->nodes[n].index)
         {
             cout<<"n!= atoi(stmp)"<<endl;
             exit(123);
