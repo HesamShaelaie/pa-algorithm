@@ -24,26 +24,34 @@ void Solve_PA(InstanceInfo *Info)
         // if pruned substitude
         // else continue start
 
+        //prune rule one
         if (start->lable >  start->Node->lable)
         {
-            // delete the start and go next
-            //continue
+            tmp = start->next;
+            start->deallocate();
+            start = tmp;
+            continue;
         }
         
+        //prune rule two
         if (start->obj > Upper)
         {
-            // delete the start and go next
-            //continue
+            tmp = start->next;
+            start->deallocate();
+            start = tmp;
+            continue;
         }
+
+
+        //prune rule three
         n = start->Node->index;
         if (start->lable.time > Info->Dijk_f[Time][n])
         {
-            // delete the start and go next
-            //continue
+            tmp = start->next;
+            start->deallocate();
+            start = tmp;
+            continue;
         }
-        
-        
-
 
 
         if ( start->lable <  start->Node->lable)
@@ -52,8 +60,6 @@ void Solve_PA(InstanceInfo *Info)
         }
         
         
-        
-
         for (int n = 0; n < start->SltN ; n++)
         {
             /* code */
