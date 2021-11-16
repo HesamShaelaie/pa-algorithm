@@ -15,8 +15,8 @@ void Solve_PA(InstanceInfo *Info)
     int st = Info->start;
     traverseinfo * start = new traverseinfo (Info->Nnodes, &Info->nodes[st]);
     start->SltN++;
-    start->SltB[st]=true;
-    start->SltL[0] = st;
+    start->SltB[st] = true;
+    start->SltL[0]  = st;
     traverseinfo * tmp;
     float Upper = std::numeric_limits<float>::max();
     
@@ -91,21 +91,30 @@ void Solve_PA(InstanceInfo *Info)
                     tmp->SltN = start->SltN;
                     for (int y = 0; y < tmp->SltN; y++)
                         tmp->SltL[y] = start->SltL[y];
+                    tmp->SltN++;
+                    tmp->SltL[tmp->SltN] = to;
 
-                    for (int y = 0; y < tmp->SltN; y++)
-                        tmp->SltL[y] = start->SltL[y];
+                    for (int y = 0; y < start->Nnodes; y++)
+                        tmp->SltB[y] = start->SltB[y];
 
+                    tmp->SltL[to] = true;
+                    tmp->next = start->next;
+                    start->next = tmp;
                 }
             }
         }
-        
-         
 
+        if (keyfirst)
+        {
+            to = tmpnode->nbr[saveindex];
+            tmparc = Info->FindEdgeM(fr,to);
+            start->lable += tmparc;
+            start->obj = start->obj + tmparc->cost;  
+            start->SltN++;
+            start->SltL[start->SltN] = to;
+            start->SltL[to] = true;
+        }
     }
-    
-
-    
-
     
 }
 
