@@ -90,11 +90,14 @@ int main(int argc, char** argv)
 
             case 3: //run the algorithm
                 
+                configd.Ntnd = 10;
+                configd.update();
+                configr.update(configd);
+
                 for (int x = 0; x < configr.Itnd; x++)
                 {
                     cout << configr.Tname[x] << "::";
                     
-
 
                     InstanceInfo *Info = reading(configt, configr, x);
                     
@@ -114,7 +117,7 @@ int main(int argc, char** argv)
                     Info->dump_dijk();
                     
                     //https://www.geeksforgeeks.org/draw-line-c-graphics/
-
+                    //https://www.youtube.com/watch?v=Dyz9O7s7B8w
 
                     cout << "   OK!"<<endl;
                 }

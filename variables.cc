@@ -292,10 +292,11 @@ void InstanceInfo::create_map()
 
 void InstanceInfo::dump_dijk()
 {
-
-    sprintf(Dijk_name, "%s/%s-D.txt",add_out,name);
     if (!exists(add_out))
         mkdir(add_out,0777);
+
+    sprintf(Dijk_name, "%s/%s-D.txt", add_out, name);
+    
     
     std::ofstream out;
     out.open(Dijk_name);
@@ -310,10 +311,10 @@ void InstanceInfo::dump_dijk()
     for (int n = 0; n < Nnodes; n++)
     {
         out << setw(4) << n;
-        out << setw(4) << Dijk_S[0];
-        out << setw(4) << Dijk_S[1];
-        out << setw(4) << Dijk_f[0];
-        out << setw(4) << Dijk_f[1];
+        out << setw(10) << Dijk_S[0][n];
+        out << setw(10) << Dijk_S[1][n];
+        out << setw(15) << Dijk_f[0][n];
+        out << setw(15) << Dijk_f[1][n];
         out << endl;
     }    
 }

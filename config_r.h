@@ -3,6 +3,7 @@
 
 #include<fstream>
 #include<unistd.h>
+#include"config_d.h"
 
 #define MAXINSTANCE 10000
 // store all data which is necessary for generating inputs (feasible)
@@ -22,18 +23,20 @@ struct config_r
     config_r()
     {
         Inst_s = 0;
-        Inst_f = 10; //not included
+        Inst_f = 10; //not inclusive
         Ntnd = 10;
         Farc = 30;
-        
+
         getcwd(address,256); // getting the folder of the codes
         strcat(address, "/instances"); // add the instance to the address
+        getcwd(address_out,256);
         strcat(address_out, "/output"); // add the instance to the address
 
         update();
     }
 
     void update();
+    void update(const config_d &configd);
 };
 
 

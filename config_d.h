@@ -44,8 +44,6 @@ struct config_d {
     // neighbor search for the nodes
     float FNeighbor;
     int   NNeighbor;
-
-    
     
     char AddGnInfo[300];
     char Address[300];

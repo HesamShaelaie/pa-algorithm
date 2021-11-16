@@ -1,7 +1,8 @@
 #ifndef _config_r_c
 #define _config_r_c
-#include"config_r.h"
 
+#include"config_r.h"
+#include"config_d.h"
 
 void config_r::update()
 {
@@ -13,4 +14,15 @@ void config_r::update()
         Itnd++;
     }
 };
+
+void config_r::update(const config_d &configd)
+{
+    Inst_s = 0;
+    Inst_f = configd.Nint;
+    Farc = int(configd.Farcs*100);
+    Ntnd = configd.Ntnd;
+
+    update();
+}
+
 #endif
