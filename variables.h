@@ -41,6 +41,12 @@ struct lableinfo
     bool operator < (const lableinfo& rhs) const;
     bool operator > (const lableinfo& rhs) const;
     bool operator == (const lableinfo& rhs) const;
+    struct lableinfo& operator+=(const arcinfo *rhs)
+    {
+        time += rhs->time;
+        cost += rhs->cost;
+        return *this;
+    };
 };
 
 

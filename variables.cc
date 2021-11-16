@@ -372,6 +372,12 @@ void traverseinfo::allocate()
 {
     SltB = new bool [Nnodes];
     SltL = new int [Nnodes];
+    for (int n = 0; n < Nnodes; n++)
+    {
+        SltB[n] = false;
+        SltL[n] = -1;
+    }
+    
     
 }
 

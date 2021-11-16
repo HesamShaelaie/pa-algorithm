@@ -14,9 +14,18 @@ void Solve_PA(InstanceInfo *Info)
 {
     int st = Info->start;
     traverseinfo * start = new traverseinfo (Info->Nnodes, &Info->nodes[st]);
+    start->SltN++;
+    start->SltB[st]=true;
+    start->SltL[0] = st;
     traverseinfo * tmp;
     float Upper = std::numeric_limits<float>::max();
-    int n;
+    
+    nodeinfo *tmpnode;
+    arcinfo *tmparc;
+    int fr;
+    int to;
+    bool keyfirst;
+    int saveindex;
 
     while (start)
     {
@@ -44,8 +53,8 @@ void Solve_PA(InstanceInfo *Info)
 
 
         //prune rule three
-        n = start->Node->index;
-        if (start->lable.time > Info->Dijk_f[Time][n])
+        fr = start->Node->index;
+        if (start->lable.time > Info->Dijk_f[Time][fr])
         {
             tmp = start->next;
             start->deallocate();
@@ -55,14 +64,39 @@ void Solve_PA(InstanceInfo *Info)
 
 
         if ( start->lable <  start->Node->lable)
-        {
             start->Node->lable = start->lable;
-        }
         
-        
-        for (int n = 0; n < start->SltN ; n++)
+
+        tmpnode = start -> Node;
+        keyfirst = false;
+
+        for (int x = 0; x < tmpnode->Nnbr ; x++)
         {
-            /* code */
+            if (!start->SltB[x])
+            {
+                if (!keyfirst)
+                {
+                    keyfirst = true;
+                    saveindex = x;
+                    /* code */
+                }else
+                {
+                    to = tmpnode->nbr[x];
+                    tmparc = Info->FindEdgeM(fr,to);
+                    tmp = new traverseinfo(Info->Nnodes, &Info->nodes[to]);
+
+                    tmp->lable = start->lable;
+                    tmp->lable += tmparc;
+                    tmp->obj = start->obj + tmparc->cost;
+                    tmp->SltN = start->SltN;
+                    for (int y = 0; y < tmp->SltN; y++)
+                        tmp->SltL[y] = start->SltL[y];
+
+                    for (int y = 0; y < tmp->SltN; y++)
+                        tmp->SltL[y] = start->SltL[y];
+
+                }
+            }
         }
         
          
