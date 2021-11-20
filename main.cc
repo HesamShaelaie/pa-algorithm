@@ -138,6 +138,11 @@ int main(int argc, char** argv)
                 testing(First, &configt);
                 testing(Second, &configt);
                 break;
+
+            case 6: //run the algorithm
+                
+
+                break;
         
         default:
             cout<<"wrong input pragma for the code!!"<<endl;
