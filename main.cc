@@ -3,16 +3,16 @@
 #include <iostream>
 #include <string>
 #include <unistd.h>
-#include <lemon/list_graph.h>
-
+//#include <lemon/list_graph.h>
 
 #include "variables.h"
 
 #include "config_t.h"
 #include "config_d.h"
 #include "config_r.h"
-#include "pa_algorithm.h"
+//#include "pa_algorithm.h"
 #include "dijkstra.h"
+#include "Qlearning.h"
 
 #include "tests.h"
 #include "inputesting.h"
@@ -21,7 +21,7 @@
 #include "printout.h"
 
 
-using namespace lemon;
+//using namespace lemon;
 using namespace std;
 
 // Report on how to use the command line to configure this program
@@ -120,8 +120,8 @@ int main(int argc, char** argv)
                     if (configt.testing)
                         Info->dump_dijk();
 
-                    Solve_PA(Info);
-                    PrintSolution(Info);
+                    //Solve_PA(Info);
+                    //PrintSolution(Info);
                     Info->del_memory();
                     
                     //https://www.geeksforgeeks.org/draw-line-c-graphics/
@@ -141,6 +141,43 @@ int main(int argc, char** argv)
 
             case 6: //run the algorithm
                 
+                configd.Ntnd = 10;
+                configd.update();
+                configr.update(configd);
+
+                for (int x = 0; x < configr.Itnd; x++)
+                {
+                    cout << configr.Tname[x] << "::";
+                    
+
+                    InstanceInfo *Info = reading(configt, configr, x);
+                    
+                    if (configt.testing)
+                        InputTesting(Info);
+                    
+                    Info->create_map();
+
+                    if (configt.testing)
+                    {
+                        InputTesting(Info);
+                        InputTesting_Find(Info);
+                        InputTesting_FindM(Info);
+                    }
+                    
+                    Dijkstra(Info);
+
+                    if (configt.testing)
+                        Info->dump_dijk();
+
+                    //Solve_PA(Info);
+                    //PrintSolution(Info);
+                    Info->del_memory();
+                    
+                    //https://www.geeksforgeeks.org/draw-line-c-graphics/
+                    //https://www.youtube.com/watch?v=Dyz9O7s7B8w  installing sdl2
+
+                    cout << "   OK!"<<endl;
+                }
 
                 break;
         

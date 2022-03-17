@@ -8,7 +8,11 @@ tmp  := $(shell mkdir -p $(ODIR))
 # Basic compiler configuration and flags
 CXX      = g++
 
+# in order to pass argumet to make you need to write "make d=1" 
+# ?= indicates to set the KDIR variable only if it's not set/doesn't have a value. thus by using make itself we define the diffult value for the argument
+
 d ?= 1
+
 ifeq ($(d), 1)
     CXXFLAGS = -MMD -ggdb -O0 -std=gnu++14 -m$(BITS) -lemon
 else
@@ -22,7 +26,7 @@ LDFLAGS	 = -m$(BITS) -lpthread -lemon
 
 
 # The basenames of the c++ files that this program uses
-CXXFILES = variables mathmatics generating_data config_t tests exitence index_creator config_d config_r reading inputesting pa_algorithm dijkstra printout main 
+CXXFILES = variables mathmatics generating_data config_t tests exitence index_creator config_d config_r  inputesting dijkstra pa_algorithm printout reading main 
 
 # The executable we will build
 TARGET = $(ODIR)/Project

@@ -13,6 +13,7 @@ void config_r::update()
         sprintf(Tname[Itnd], "CSP-%d-%2d-%d-f", Ntnd, Farc, i);
         Itnd++;
     }
+    
 };
 
 void config_r::update(const config_d &configd)

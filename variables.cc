@@ -100,12 +100,8 @@ InstanceInfo::InstanceInfo()
     finish = -1;
     arcs = nullptr;
     nodes = nullptr;
-
-    sol_n = 0;
-    sol_obj = 0;
-    sol_path = nullptr;
-
-
+    SolF = 0;
+    
     PathsN = nullptr;
     PathsO = nullptr;
     PathsT = nullptr;
@@ -124,7 +120,6 @@ void InstanceInfo::all_memory()
 {
     arcs = new arcinfo [Narcs];
     nodes = new nodeinfo [Nnodes];
-    sol_path = new int [Nnodes];
 };
 
 void InstanceInfo::all_dijk()
@@ -229,11 +224,6 @@ void InstanceInfo::del_memory()
     if(!Dic.empty())
         Dic.clear();
 
-    if (!sol_path)
-    {
-        delete[] sol_path;
-        sol_path = nullptr;
-    }
 };
 
 
@@ -331,75 +321,20 @@ void InstanceInfo::dump_dijk()
 }
 
 lableinfo::lableinfo()
-{    
-    time = std::numeric_limits<float>::max();
-    cost = std::numeric_limits<float>::max();
-}
-
-bool lableinfo::operator < (const lableinfo& rhs) const
 {
-    if (time< rhs.time && cost< rhs.cost)
-        return true;
-    else
-        return false;
+    time =0;
+    cost =0;
 }
 
-bool lableinfo::operator > (const lableinfo& rhs) const
+/*
+void InstanceInfo::all_sol()
 {
-    if (time> rhs.time && cost> rhs.cost)
-        return true;
-    else
-        return false;
+    Lables = new lableinfo [Nnodes];
 }
-
-bool lableinfo::operator == (const lableinfo& rhs) const
-{
-    if (time == rhs.time && cost == rhs.cost)
-        return true;
-    else
-        return false;
-}
-
-
+*/
 // we saw numbers aling the way but we did not track them
 // give you an enalogy 
-// cannot think of it on spot
 
-
-traverseinfo::traverseinfo(int N, nodeinfo *Nd)
-{
-    SltB = nullptr;
-    SltL = nullptr;
-    SltN =0;
-    next = nullptr;
-    Nnodes = N;
-    Node = Nd;
-    lable.cost = 0;
-    lable.time = 0;
-    obj =0;
-}
-
-void traverseinfo::allocate()
-{
-    SltB = new bool [Nnodes];
-    SltL = new int [Nnodes];
-    for (int n = 0; n < Nnodes; n++)
-    {
-        SltB[n] = false;
-        SltL[n] = -1;
-    }
-    
-    
-}
-
-void traverseinfo::deallocate()
-{
-    delete[] SltB;
-    delete[] SltL;
-    SltB = nullptr;
-    SltL = nullptr;
-}
-
-
+//traverseinfo::deallocate
 
 #endif

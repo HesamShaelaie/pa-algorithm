@@ -1,18 +1,6 @@
 #ifndef _gurobi_c
 #define _gurobi_c
 
-/* Copyright 2021, Gurobi Optimization, LLC */
-
-/* Facility location: a company currently ships its product from 5 plants
-   to 4 warehouses. It is considering closing some plants to reduce
-   costs. What plant(s) should the company close, in order to minimize
-   transportation and fixed costs?
-
-   Based on an example from Frontline Systems:
-   http://www.solver.com/disfacility.htm
-   Used with permission.
- */
-
 #include "gurobi_c++.h"
 #include <sstream>
 using namespace std;
