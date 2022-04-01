@@ -20,6 +20,7 @@ struct config_r
     int Itnd;
     char Tadd[MAXINSTANCE][300];
     char Tname[MAXINSTANCE][300];
+    
     config_r()
     {
         Inst_s = 0;

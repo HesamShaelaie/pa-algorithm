@@ -1,7 +1,6 @@
 #ifndef _reading_c
 #define _reading_c
 
-
 #include<fstream>
 #include<iostream>
 #include<string>
@@ -47,17 +46,23 @@ InstanceInfo* reading (const config_t &configt, const config_r &configr, int x)
     input >> Info->finish;
 
     input >> stmp;
-    input >> Info->cost;
+    input >> Info->constraint;
 
     Info->all_memory();
 
+    input >> stmp;
+    input >> stmp;
+    input >> stmp;
+    input >> stmp;
+    input >> stmp;
+    
     for (int a = 0; a < Info->Narcs; a++)
     {
         input >> stmp;
         input >>Info->arcs[a].st;
         input >>Info->arcs[a].ed;
-        input >>Info->arcs[a].time;
         input >>Info->arcs[a].cost;
+        input >>Info->arcs[a].time;
     }
 
     Info->all_node();

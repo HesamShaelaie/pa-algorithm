@@ -76,7 +76,7 @@ void Solve_PA(InstanceInfo *Info)
 
         //prune rule three
         fr = start->Node->index;
-        if ((start->lable.time + Info->Dijk_f[Time][fr]) > Info->cost)
+        if ((start->lable.time + Info->Dijk_f[Time][fr]) > Info->constraint)
         {
             tmp = start->next;
             start->deallocate();

@@ -17,9 +17,9 @@ void config_r::update()
 
 void config_r::update(const config_d &configd)
 {
-    Inst_s = 0;
-    Inst_f = configd.Nint;
-    Farc = int(configd.Farcs*100);
+    Inst_s = 0;                     //start
+    Inst_f = configd.Nint;          //finish
+    Farc = int(configd.Farcs*100);  
     Ntnd = configd.Ntnd;
 
     update();

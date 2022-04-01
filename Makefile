@@ -82,6 +82,8 @@ crt3:
 
 run:
 	@./$(ODIR)/Project -m 3 -t 1 -d 1
+runq:
+	@./$(ODIR)/Project -m 6 -t 1 -d 1
 
 test:
 	@./$(ODIR)/Project -m 4 -t 1

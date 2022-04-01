@@ -26,7 +26,7 @@ arcinfo::arcinfo()
     time = 0;
 }
 
-bool arcinfo::operator < (const arcinfo& rhs) const
+ bool arcinfo::operator < (const arcinfo& rhs) const
 {
     if (time + epz < rhs.time)
         return true;
@@ -388,8 +388,6 @@ void traverseinfo::allocate()
         SltB[n] = false;
         SltL[n] = -1;
     }
-    
-    
 }
 
 void traverseinfo::deallocate()

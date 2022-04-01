@@ -13,7 +13,7 @@ void InputTesting(InstanceInfo *Info)
     for (int p = 0; p < Info->Npaths; p++)
     {
         float Time=0;
-        float Weight=0;
+        float Cost=0;
 
         for (int x = 1; x < Info->PathsN[p]; x++)
         {
@@ -28,8 +28,8 @@ void InputTesting(InstanceInfo *Info)
                 exit(12);
             }
                         
-            Time += c->cost;
-            Weight += c->time;
+            Time += c->time;
+            Cost += c->cost;
         }
 
         if (abs(Time - Info->PathsT[p])> epzv2)
@@ -39,7 +39,7 @@ void InputTesting(InstanceInfo *Info)
             exit(1113);
         }
 
-        if (abs(Weight - Info->PathsW[p])> epzv2)
+        if (abs(Cost - Info->PathsW[p])> epzv2)
         {
             std::cout<<"if (abs(Weight - Info->PathsW[p])>epz)"<<std::endl;
             std::cout<<abs(Weight - Info->PathsW[p])<<std::endl;

@@ -6,7 +6,4 @@
 
 void Solve_PA(InstanceInfo *Info);
 
-
-
-
 #endif
