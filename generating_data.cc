@@ -414,20 +414,29 @@ void gen_data_with_feasibility(config_t configt, config_d configd)
                     if (W_Count>10000) // if we cannot find a node to go forward we need to take a step back and then start from a new place
                     {
                         W_Count = 0;
-                        int onpath = Tmp_P[Cnt-1];
-                        Tmp_B[onpath] = false;
+                        int CntX = rand_int_bet(1, Cnt-1);
 
-                        Tmp_T -=  Arces[Tmp_P[Cnt-2]][Tmp_P[Cnt-1]].time;
-                        Tmp_C -=  Arces[Tmp_P[Cnt-2]][Tmp_P[Cnt-1]].cost;
+                        // example if Cnt = 4
+                        // 1- 3 2 cnt = 3
+                        // 2- 2 1 cnt = 2
+                        // 3- 1 0 cnt = 1
 
-                        Cnt--;
-                        if (Cnt <= 1)
+                        for (size_t cnt = 0; cnt < CntX; cnt++)
                         {
-                            cout<<"Cnt==1"<<endl;
-                            cout<<"even by back tracking we cannot creat the path!!"<<endl;
-                            exit(111);
-                        }
+                            int onpath = Tmp_P[Cnt-1];
+                            Tmp_B[onpath] = false;
 
+                            Tmp_T -=  Arces[Tmp_P[Cnt-2]][Tmp_P[Cnt-1]].time;
+                            Tmp_C -=  Arces[Tmp_P[Cnt-2]][Tmp_P[Cnt-1]].cost;
+
+                            Cnt--;
+                            if (Cnt < 1)
+                            {
+                                cout<<"Cnt<1"<<endl;
+                                cout<<"even by back tracking we cannot creat the path!!"<<endl;
+                                exit(111);
+                            }
+                        }
                     }
                     
                     //cout<<Cnt<<endl;
