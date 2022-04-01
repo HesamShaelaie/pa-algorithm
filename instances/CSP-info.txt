@@ -1,21 +1,5 @@
  ---------------------------------------------------------- 
-Time:   Fri Apr  1 00:42:29 2022
-Ninstance:    10
-Nnode:    10
-Farcs:    0.3
-Narcs:    27
-Cordination_min: 0
-Cordination_max: 1000
-Tchance: 0.5
-Tless: 0.8
-Tmore: 1.2
-Min_on_path: 5
-Max_on_path: 6
-RNeighbor: 3
-Ffpath: 0.5
-Nfpath: 5
- ---------------------------------------------------------- 
-Time:   Fri Apr  1 05:55:27 2022
+Time:   Fri Apr  1 06:15:59 2022
 Ninstance:    10
 Nnode:    10
 Farcs:    0.3

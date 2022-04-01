@@ -677,7 +677,13 @@ void gen_data_with_feasibility(config_t configt, config_d configd)
         out<<endl;
         out<<endl;
 
-        out << Nfpath<<endl;
+        out << Nfpath<<endl<<endl;
+
+        out << setw(4) << "Nb";
+        out << setw(8) << "NoP";
+        out << setw(8) << "Cost";
+        out << setw(8) << "Time"<<endl<<endl;
+
 
         for (int p = 0; p < Nfpath; p++)
         {
@@ -691,8 +697,9 @@ void gen_data_with_feasibility(config_t configt, config_d configd)
             out.setf(ios::showpoint);
             out.precision(2);
             
-            out << setw(12) << Tpaths[p] ;
+        
             out << setw(12) << Cpaths[p] ;
+            out << setw(12) << Tpaths[p] ;
 
             out.copyfmt(cout_state);
             

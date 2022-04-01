@@ -55,7 +55,7 @@ InstanceInfo* reading (const config_t &configt, const config_r &configr, int x)
     input >> stmp;
     input >> stmp;
     input >> stmp;
-    
+
     for (int a = 0; a < Info->Narcs; a++)
     {
         input >> stmp;
@@ -88,12 +88,19 @@ InstanceInfo* reading (const config_t &configt, const config_r &configr, int x)
         input >> Info->Npaths;
         Info->all_memory_test_B();
 
+         input>>stmp;
+          input>>stmp;
+           input>>stmp;
+            input>>stmp;
+             
         for (int p = 0; p < Info->Npaths; p++)
         {
             input>>stmp;
             input>>Info->PathsN[p];
-            input>>Info->PathsT[p];
+            
             input>>Info->PathsW[p];
+            input>>Info->PathsT[p];
+            
             for (int x = 0; x < Info->PathsN[p]; x++)
                 input>>Info->PathsO[p][x];
         }
