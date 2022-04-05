@@ -64,11 +64,14 @@ nodeinfo::nodeinfo()
 void nodeinfo::all_memory()
 {
     nbr = new int [Nnbr];
+    arcs = new arcinfo*[Nnbr];
 };
 
 void nodeinfo::del_memory()
 {
     delete[] nbr;
+    delete[] arcs;
+    arcs = nullptr;
     nbr = nullptr;
 };
 
@@ -169,8 +172,6 @@ void InstanceInfo::all_memory_test_B()
     }
     
 };
-
-
 
 void InstanceInfo::del_memory()
 {
@@ -278,6 +279,7 @@ void InstanceInfo::create_map()
     {
         pointA = arcs[a].st;
         pointB = arcs[a].ed;
+        nodes[pointA].arcs[nodes[pointA].Cnbr++] = &arcs[a];
 
         index = index_creator(Nnodes, pointA, pointB);
 
@@ -293,6 +295,17 @@ void InstanceInfo::create_map()
             cout<<"something wrong at the reading data"<<endl;
         }
     }
+
+    for (size_t i = 0; i < Nnodes; i++)
+    {
+        if (nodes[i].Nnbr!=nodes[i].Cnbr)
+        {
+            cout<<"nodes[i].Nnbr!=nodes[i].Cnbr"<<endl;
+            exit(1244);
+        }
+        
+    }
+    
 }
 
 void InstanceInfo::dump_dijk()

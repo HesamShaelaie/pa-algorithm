@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/obj64/Project",
-            "args": ["-m", "3", "-t", "1", "-d", "1"],
+            "args": ["-m", "6", "-t", "1", "-d", "1"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],

@@ -1,25 +1,56 @@
 #ifndef _Qlearning_h
 #define _Qlearning_h
 
+
 #include"variables.h"
 
-#define nx 100
+#include <map>
+
+
+enum ObjStatus {MINIMUM, MAXIMUM};
+#define nx 100  //max degree of each node
+
+struct NodeReferenceCSP
+{
+    int node = -1;
+    float Rrhs = -1;
+    long long CreateID()
+    {
+        return node * pow(10,9) + int(Rrhs*10);
+    }
+};
 
 struct statesinfo
 {   
+    // general information on the RL problems
     bool done = false;
-
-    int node = -1;
-    float Qvalue = 0;  //
+    long long ID = -1;
+    int CntNX = 0;
+    float Qvalue = 0;
     float Avalue[nx];
     statesinfo *next[nx];
 
-    float Rrhs = -1;  // remainings rhs
+    // supper important information
 
+    NodeReferenceCSP NodeInfo;
+
+    statesinfo(ObjStatus ObSt)
+    {
+        if (ObSt == ObjStatus::MINIMUM)
+        {
+            Qvalue = std::numeric_limits<float>::max();
+        }
+        else
+        {
+            Qvalue = std::numeric_limits<float>::min();
+        }
+        
+    }
 };
 
 
 void Qlearning(InstanceInfo *Info);
+
 
 
 #endif

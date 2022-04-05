@@ -43,6 +43,7 @@ void config_d::write_general_info()
     out_G << "RNeighbor: " << NNeighbor <<endl;
     out_G << "Ffpath: " << Ffpath <<endl;
     out_G << "Nfpath: " << Nfpath <<endl;
+
     out_G.close();
 }
 

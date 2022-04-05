@@ -58,6 +58,8 @@ struct nodeinfo
     float y;
     int Nnbr;
     int *nbr;
+    int Cnbr = 0;
+    arcinfo **arcs;
     lableinfo lable;
     
     nodeinfo();

@@ -13,7 +13,7 @@
 #include "config_r.h"
 #include "pa_algorithm.h"
 #include "dijkstra.h"
-//#include "Qlearning.h"
+#include "Qlearning.h"
 
 #include "tests.h"
 #include "inputesting.h"
@@ -170,11 +170,11 @@ int main(int argc, char** argv)
                     if (configt.testing) // write the Dijk in seperate files
                         Info->dump_dijk();
 
-                    //Qlearning(Info);
-                    PrintSolution(Info);
+                    Qlearning(Info);
+                    //PrintSolution(Info);
                     Info->del_memory();
-                    
-                    cout << "   OK!"<<endl;
+                    //cout << "   OK!"<<endl;
+                    break;
                 }
 
                 break;
