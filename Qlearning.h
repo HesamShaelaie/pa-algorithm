@@ -24,6 +24,7 @@ struct NodeReferenceCSP
 {
     int node = -1;
     float Rrhs = -1;
+    
     long long CreateID()
     {
         return CreateStateID(node ,Rrhs);
@@ -58,9 +59,7 @@ struct statesinfo
     }
 };
 
-int EpsilonGreedy(int CntNx, float *Avalue)
-
-
+int EpsilonGreedy(int limit, int CntNx, float *Avalues, ObjStatus State);
 void Qlearning(InstanceInfo *Info);
 
 

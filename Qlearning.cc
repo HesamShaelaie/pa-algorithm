@@ -70,9 +70,9 @@ int EpsilonGreedy(int limit, int CntNx, float *Avalues, ObjStatus State) //limit
             }
 
         }
-        
-        return index;
     }
+
+    return index;
 }
 
 
@@ -89,7 +89,7 @@ void Qlearning(InstanceInfo *Info)
 
     // inner global variables
     statesinfo *tmp_state;
-
+    ObjStatus StateOfOptimization = ObjStatus::MINIMUM;
 
     // termination conditions
     int Dtn = Info->finish; // destination
@@ -130,8 +130,6 @@ void Qlearning(InstanceInfo *Info)
         exit(33);
         //tmp_state = idxState->second;
     }
-    
-    int *ListStateOnPath= new int [Info->Nnodes];
 
     int Fr;
     int NTo; // Number of next
@@ -139,12 +137,27 @@ void Qlearning(InstanceInfo *Info)
 
     float FrRhs;
     float ToRhs;
+
+    int NextMoveIndex;
     arcinfo *tmp_arc;
+    int ExplorationLimit = 20; // 0-Exploration goes to exploration the rest goes to use the current answers
+
+    int NodeOnPath;
+    int BestNdPath;
+    int *ListStateOnPath= new int [Info->Nnodes];
+    int *BestLSateOnPath= new int [Info->Nnodes];
+
+    statesinfo *StartFromHere;
+    float CltObj  = 0;
+    float bestObj = (ObjStatus::MINIMUM );
+    
 
     while (true) //iteration
     {
 
         statesinfo *st = PStart;
+        StartFromHere = st;
+        NodeOnPath = 0;
 
         // cout<<"size is  "<< DicState.size() <<endl;
 
@@ -152,10 +165,6 @@ void Qlearning(InstanceInfo *Info)
         
         do
         {
-            
-            // Preparation
-            // Preparation
-            // Preparation
             // Preparation
 
             if (st->done)
@@ -209,22 +218,25 @@ void Qlearning(InstanceInfo *Info)
             }
             //==========//==========//==========//==========//==========
             
-            //selecing action based on the epsilon greedy
-
-            //Select and move
-            //Select and move
-            //Select and move
-            //Select and move
-
+            //Selecing action based on the epsilon greedy
+            NextMoveIndex = EpsilonGreedy(ExplorationLimit, st->CntNX, st->Avalue, ObjStatus::MINIMUM);
+            // record the path
+            ListStateOnPath[NodeOnPath++] = NextMoveIndex;
+            // move
+            st = st->next[NextMoveIndex];
 
             //==========//==========//==========//==========//==========
 
             //Check the terminations
-            //If termination conditions 1
-            //If termination conditions 2
-            //If termination conditions 3
-            //If termination conditions 4
 
+            //If termination conditions 1 // did we reach to the destination
+            if (st->NodeInfo.node == Info->finish)
+            {
+                /* code */
+            }
+            
+            //If termination conditions 2 // did we reach to infeasibility
+            
 
             //==========//==========//==========//==========//==========
             
