@@ -13,10 +13,66 @@ using std::endl;
 //We need to put print here
 //We need to put print here
 
-int EpsilonGreedy(int CntNx, float Avalues)
-{
-    
 
+
+int EpsilonGreedy(int limit, int CntNx, float *Avalues, ObjStatus State) //limit should be between 0 and 100 -> if it is 10 means 0 to 10 we will go for exploration
+{
+    int RndStart = rand()%101;
+
+    float tmp;
+    int index;
+
+    if (RndStart <= limit)
+    {   
+        index = rand()%CntNx;
+    }
+    else
+    {
+        if (State = ObjStatus::MINIMUM)
+        {
+            tmp =  std::numeric_limits<float>::max();
+            index = -1;
+            for (int x = 0; x < CntNx; x++)
+            {
+                if(Avalues[x]<tmp)
+                {
+                    tmp = Avalues[x];
+                    index = x;
+                }
+            }
+
+            if (index == -1)
+            {
+                cout<<"something is wrong in epsilong greedy!!"<<endl;
+                exit(555);
+            }
+            
+            
+        }
+        else
+        {
+            tmp =  std::numeric_limits<float>::min();
+            
+            index = -1;
+            for (int x = 0; x < CntNx; x++)
+            {
+                if(Avalues[x]>tmp)
+                {
+                    tmp = Avalues[x];
+                    index = x;
+                }
+            }
+
+            if (index == -1)
+            {
+                cout<<"something is wrong in epsilong greedy!!"<<endl;
+                exit(555);
+            }
+
+        }
+        
+        return index;
+    }
 }
 
 
