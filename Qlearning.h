@@ -18,6 +18,8 @@ long long CreateStateID(int node, float Rrhs)
 }
 
 
+
+
 struct NodeReferenceCSP
 {
     int node = -1;
@@ -56,7 +58,7 @@ struct statesinfo
     }
 };
 
-
+int EpsilonGreedy(int CntNx, float *Avalue)
 
 
 void Qlearning(InstanceInfo *Info);

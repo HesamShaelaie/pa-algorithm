@@ -13,6 +13,14 @@ using std::endl;
 //We need to put print here
 //We need to put print here
 
+int EpsilonGreedy(int CntNx, float Avalues)
+{
+    
+
+}
+
+
+
 void Qlearning(InstanceInfo *Info)
 {
 
@@ -145,7 +153,7 @@ void Qlearning(InstanceInfo *Info)
             }
             //==========//==========//==========//==========//==========
             
-            
+            //selecing action based on the epsilon greedy
 
             //Select and move
             //Select and move
