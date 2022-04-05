@@ -10,7 +10,8 @@ using std::endl;
 #define TNNCONSTANT 10000000
 #define RHSCONSTANT 10000000
 
-
+//We need to put print here
+//We need to put print here
 
 void Qlearning(InstanceInfo *Info)
 {
@@ -68,55 +69,100 @@ void Qlearning(InstanceInfo *Info)
     
     int *ListStateOnPath= new int [Info->Nnodes];
 
-    int fr;
-    int Nto; // number of next
-    int Ito; // ID or name name of the next node
+    int Fr;
+    int NTo; // Number of next
+    int ITo; // ID or name name of the next node
+
+    float FrRhs;
+    float ToRhs;
+    arcinfo *tmp_arc;
 
     while (true) //iteration
     {
 
         statesinfo *st = PStart;
-        //cout<<"size is  "<< DicState.size() <<endl;
+
+        // cout<<"size is  "<< DicState.size() <<endl;
+
         // record the path info
-        /*
+        
         do
         {
+            
+            // Preparation
+            // Preparation
+            // Preparation
+            // Preparation
+
             if (st->done)
             {
 
-                fr = st->NodeInfo.node;
-                Nto = Info->nodes[fr].Nnbr;
-                for (size_t i = 0; i < Nto; i++)
+                Fr = st->NodeInfo.node;
+                FrRhs = st->NodeInfo.Rrhs;
+
+                NTo = Info->nodes[Fr].Nnbr;
+
+                for (size_t i = 0; i < NTo; i++)
                 {
-                    Ito = 
+                    tmp_arc = Info->nodes[Fr].arcs[i];
+                    ITo = tmp_arc->ed;
+                    ToRhs = tmp_arc->time + FrRhs;
+
+                    index = CreateStateID(ITo, ToRhs);
+                    idxState = DicState.find(index);
+                    //searching for the index in dic
+                    if (idxState == DicState.end()) 
+                    {
+                        //creating new state
+
+                        tmp_state = new statesinfo(MINIMUM);
+
+                        //node info
+                        tmp_state.ID = index;
+                        tmp_state->NodeInfo.node = ITo;
+                        tmp_state->NodeInfo.Rrhs = ToRhs;
+
+                        //state info connnections
+                        st->next[st->CntNX] = tmp_state;
+                        st->Avalue[st->CntNX] = std::numeric_limits<float>::max();
+                        st->CntNX++;
+                        DicState[index] = tmp_state;
+                    }
+                    else
+                    {
+                        // we found it
+                        tmp_state = idxState->second;
+
+                        //state info connnections
+                        st->next[st->CntNX] = tmp_state;
+                        st->Avalue[st->CntNX] = std::numeric_limits<float>::max();
+                        st->CntNX++;
+                        DicState[index] = tmp_state;
+                    }
                 }
                 
-                //to
-                //calclulate the future node
-                //check if it exist
-                //if not
-                // create state
-                // add to the map
-                // if yes connect this to that
-                
-
+                st->done = true;
             }
+            //==========//==========//==========//==========//==========
+            
             
 
+            //Select and move
+            //Select and move
+            //Select and move
+            //Select and move
 
 
+            //==========//==========//==========//==========//==========
+
+            //Check the terminations
+            //If termination conditions 1
+            //If termination conditions 2
+            //If termination conditions 3
+            //If termination conditions 4
 
 
-
-
-
-            //if termination conditions 1
-            //if termination conditions 2
-            //if termination conditions 3
-            //if termination conditions 4
-
-
-           
+            //==========//==========//==========//==========//==========
             
 
         
@@ -124,7 +170,6 @@ void Qlearning(InstanceInfo *Info)
         
         //updating the states
         //updating the qvalues
-        */
 
         break;
     }

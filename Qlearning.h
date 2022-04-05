@@ -10,13 +10,21 @@
 enum ObjStatus {MINIMUM, MAXIMUM};
 #define nx 100  //max degree of each node
 
+
+long long CreateStateID(int node, float Rrhs)
+{
+
+    return node * pow(10,9) + int(Rrhs*100);
+}
+
+
 struct NodeReferenceCSP
 {
     int node = -1;
     float Rrhs = -1;
     long long CreateID()
     {
-        return node * pow(10,9) + int(Rrhs*10);
+        return CreateStateID(node ,Rrhs);
     }
 };
 
@@ -47,6 +55,8 @@ struct statesinfo
         
     }
 };
+
+
 
 
 void Qlearning(InstanceInfo *Info);
