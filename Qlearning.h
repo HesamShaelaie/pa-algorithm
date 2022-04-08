@@ -11,25 +11,18 @@ enum ObjStatus {MINIMUM, MAXIMUM};
 #define nx 100  //max degree of each node
 
 
-long long CreateStateID(int node, float Rrhs)
-{
-
-    return node * pow(10,9) + int(Rrhs*100);
-}
-
-
-
 
 struct NodeReferenceCSP
 {
     int node = -1;
     float Rrhs = -1;
-    
-    long long CreateID()
-    {
-        return CreateStateID(node ,Rrhs);
-    }
 };
+
+
+long long CreateStateID(int node, float Rrhs);
+long long CreateStateID(const NodeReferenceCSP &tmpnode);
+
+
 
 struct statesinfo
 {   
@@ -40,7 +33,8 @@ struct statesinfo
     float Qvalue = 0;
     float Avalue[nx];
     statesinfo *next[nx];
-
+    arcinfo *arcnext[nx];
+    statesinfo *DeleteingLine = nullptr;
     // supper important information
 
     NodeReferenceCSP NodeInfo;
@@ -55,12 +49,11 @@ struct statesinfo
         {
             Qvalue = std::numeric_limits<float>::min();
         }
-        
     }
 };
 
 int EpsilonGreedy(int limit, int CntNx, float *Avalues, ObjStatus State);
-void Qlearning(InstanceInfo *Info);
+void Qlearning(InstanceInfo *Info, bool dump = false);
 
 
 

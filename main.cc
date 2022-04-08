@@ -170,7 +170,7 @@ int main(int argc, char** argv)
                     if (configt.testing) // write the Dijk in seperate files
                         Info->dump_dijk();
 
-                    Qlearning(Info);
+                    Qlearning(Info, true);
                     //PrintSolution(Info);
                     Info->del_memory();
                     //cout << "   OK!"<<endl;

@@ -383,13 +383,13 @@ traverseinfo::traverseinfo(int N, nodeinfo *Nd)
 {
     SltB = nullptr;
     SltL = nullptr;
-    SltN =0;
+    SltN = 0;
     next = nullptr;
     Nnodes = N;
     Node = Nd;
     lable.cost = 0;
     lable.time = 0;
-    obj =0;
+    obj = 0;
 }
 
 void traverseinfo::allocate()

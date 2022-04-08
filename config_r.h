@@ -12,6 +12,7 @@ struct config_r
 {
     char address[300];
     char address_out[300];
+    char address_raw[300];
     int Inst_s;
     int Inst_f;
     int Ntnd;
@@ -32,7 +33,7 @@ struct config_r
         strcat(address, "/instances"); // add the instance to the address
         getcwd(address_out,256);
         strcat(address_out, "/output"); // add the instance to the address
-
+        getcwd(address_raw,256);
         update();
     }
 
