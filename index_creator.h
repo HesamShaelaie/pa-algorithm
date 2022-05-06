@@ -4,4 +4,7 @@
 
 long long index_creator(int Nnodes, int from, int to);
 
+
+long long index_creator(int Nnodes, int from, int to);
+
 #endif

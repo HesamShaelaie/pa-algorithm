@@ -51,18 +51,18 @@ struct config_d {
     config_d()
     { 
         Nint =10;
-        Ntnd = 100;
+        Ntnd = 10;
         Farcs  = 0.3;
         Narcs = int(Permutation(Ntnd, 2)*Farcs);
         Ffpath = 0.5;
         Nfpath = int(Ffpath * Ntnd);
         Cor_min = 0;
         Cor_max = 1000;
-        Cchance = 0.5;    // I should fix this    
+        Cchance = 0.5; 
         Cless = 0.8;
         Cmore = 1.2;
 
-        min_on_pathf = 0.2;
+        min_on_pathf = 0.5;
         max_on_pathf = 0.6;
 
         min_on_path = int(Ntnd*min_on_pathf);

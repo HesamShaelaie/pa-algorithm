@@ -205,21 +205,26 @@ void gen_data_with_feasibility(config_t configt, config_d configd)
     //==============================================================================
     //==============================================================================
     //==============================================================================
+
     char address[300];
     strncat(address, configd.Address, 300);
     
-    int Nint = configd.Nint;
-    int Ntnd = configd.Ntnd;
-    int Narcs = configd.Narcs;
-    int Nfpath = configd.Nfpath;
-    float Cor_min = configd.Cor_min;           
-    float Cor_max = configd.Cor_max;
-    float Cchance = configd.Cchance;
-    float Cless = configd.Cless;
-    float Cmore = configd.Cmore;
-    int min_on_path = configd.min_on_path;
-    int max_on_path = configd.max_on_path;
-    int NNeighbor = configd.NNeighbor;
+    int Nint = configd.Nint;        // number of instances
+    int Ntnd = configd.Ntnd;        // number of nodes in the game
+    int Narcs = configd.Narcs;      // number of arcs in the game total. comes from int(Permutation(Ntnd, 2)*Farcs);
+    int Nfpath = configd.Nfpath;    // number of nodes on the path
+    
+    float Cor_min = configd.Cor_min;// min cordination on the map
+    float Cor_max = configd.Cor_max;// max cordination on the map
+
+    float Cchance = configd.Cchance;// with respect to the time we will increase or decrese the costs
+    float Cless = configd.Cless;    // goes down or
+    float Cmore = configd.Cmore;    // goes up
+
+    int min_on_path = configd.min_on_path;      // min number of nodes on the path
+    int max_on_path = configd.max_on_path;      // max number of nodes on the path
+    int NNeighbor = configd.NNeighbor;          // number of neighbors
+
     //==============================================================================
     //==============================================================================
     //==============================================================================
@@ -238,15 +243,15 @@ void gen_data_with_feasibility(config_t configt, config_d configd)
             Nodes[n].y = rand_float_bet(Cor_min,Cor_max,2);
         }
 
-        Nodes[0].x = Cor_min;
-        Nodes[0].y = Cor_min;
+        Nodes[0].x = Cor_min; // start at 0 for x
+        Nodes[0].y = Cor_min; // start at 0 for y
 
-        Nodes[Ntnd-1].x = Cor_max;
-        Nodes[Ntnd-1].y = Cor_max;
-
-
-        arcinfo **Neighbor = new arcinfo *[Ntnd];
+        Nodes[Ntnd-1].x = Cor_max;  // finish at max for x
+        Nodes[Ntnd-1].y = Cor_max;  // finish at max for y
+ 
+        arcinfo **Neighbor = new arcinfo *[Ntnd]; // Ntnd number of nodes in the game
         arcinfo **Arces = new arcinfo *[Ntnd];
+
         for (int i = 0; i < Ntnd; i++)
         {
             Neighbor[i] = new arcinfo[Ntnd];
@@ -260,7 +265,7 @@ void gen_data_with_feasibility(config_t configt, config_d configd)
                 
                 Arces[i][j].st=i;
                 Arces[i][j].ed=j;
-                if (rand_int_bet(0,10)>5)
+                if (rand_int_bet(0,10)>(Cchance*10))
                     Arces[i][j].cost = Arces[i][j].time * Cmore;
                 else
                     Arces[i][j].cost = Arces[i][j].time * Cless;
@@ -273,9 +278,7 @@ void gen_data_with_feasibility(config_t configt, config_d configd)
         for (int i = 0; i < Ntnd; i++)
         for (int j = 0; j < Ntnd; j++)
             Neighbor[i][j] = Arces[i][j];
-        
 
-        
         
         // sorting the neighbors
         for (int i = 0; i < Ntnd; i++)
@@ -359,11 +362,11 @@ void gen_data_with_feasibility(config_t configt, config_d configd)
         /// ========================================================================================
         /// ========================================================================================
 
-        int **Fpaths = new int*[Nfpath];
-        bool **Opaths = new bool *[Nfpath];
-        int *Npaths = new int [Nfpath];
-        float *Tpaths = new float[Nfpath];
-        float *Cpaths = new float[Nfpath];
+        int **Fpaths = new int*[Nfpath];        // Nfpath number of paths
+        bool **Opaths = new bool *[Nfpath];     
+        int *Npaths = new int [Nfpath];         // number of nodes on the path
+        float *Tpaths = new float[Nfpath];      // time of the path
+        float *Cpaths = new float[Nfpath];      // cost of the path
         
         for (int i = 0; i < Nfpath; i++)
         {
@@ -408,23 +411,32 @@ void gen_data_with_feasibility(config_t configt, config_d configd)
                 while (Cnt < Tmp_I - 1) //why not -2, since we are counting from 0 to n-1 then we add the ending point by ourself
                 {
                     W_Count++;
-                    if (W_Count>10000)
+                    if (W_Count>10000) // if we cannot find a node to go forward we need to take a step back and then start from a new place
                     {
                         W_Count = 0;
-                        int onpath = Tmp_P[Cnt-1];
-                        Tmp_B[onpath] = false;
+                        int CntX = rand_int_bet(1, Cnt-1);
 
-                        Tmp_T -=  Arces[Tmp_P[Cnt-2]][Tmp_P[Cnt-1]].time;
-                        Tmp_C -=  Arces[Tmp_P[Cnt-2]][Tmp_P[Cnt-1]].cost;
+                        // example if Cnt = 4
+                        // 1- 3 2 cnt = 3
+                        // 2- 2 1 cnt = 2
+                        // 3- 1 0 cnt = 1
 
-                        Cnt--;
-                        if (Cnt <= 1)
+                        for (size_t cnt = 0; cnt < CntX; cnt++)
                         {
-                            cout<<"Cnt==1"<<endl;
-                            cout<<"even by back tracking we cannot creat the path!!"<<endl;
-                            exit(111);
-                        }
+                            int onpath = Tmp_P[Cnt-1];
+                            Tmp_B[onpath] = false;
 
+                            Tmp_T -=  Arces[Tmp_P[Cnt-2]][Tmp_P[Cnt-1]].time;
+                            Tmp_C -=  Arces[Tmp_P[Cnt-2]][Tmp_P[Cnt-1]].cost;
+
+                            Cnt--;
+                            if (Cnt < 1)
+                            {
+                                cout<<"Cnt<1"<<endl;
+                                cout<<"even by back tracking we cannot creat the path!!"<<endl;
+                                exit(111);
+                            }
+                        }
                     }
                     
                     //cout<<Cnt<<endl;
@@ -547,8 +559,8 @@ void gen_data_with_feasibility(config_t configt, config_d configd)
         
         float max_path= -1;
 
-        for (int i = 0; i < Nfpath; i++)
-            if (max_path < Tpaths[i])
+        for (int i = 0; i < Nfpath; i++)  //time is going to be on the constraint
+            if (max_path < Tpaths[i])      // finding the max of the time as the cap
                 max_path = Tpaths[i];
         
         
@@ -600,10 +612,17 @@ void gen_data_with_feasibility(config_t configt, config_d configd)
         out << "Narcs:  " << Narcs << endl;
         out << "Snode:  " << 0 << endl;
         out << "Enode:  " << Ntnd-1 << endl;
-        out << "Const:  " << max_path << endl;
+        out << "Const:  " << max_path << endl; //which here it is time
         
 
         int Cnt_test = 0;
+
+        out << setw(5) << "Nb";
+        out << setw(5) << "Fr";
+        out << setw(5) << "To";
+        out << setw(5) << "Ct";
+        out << setw(5) << "tm"<<endl<<endl;
+
         for (int i = 0; i < Ntnd; i++)
         for (int j = 0; j < Ntnd; j++)
         {
@@ -620,8 +639,11 @@ void gen_data_with_feasibility(config_t configt, config_d configd)
                 out.setf(ios::showpoint);
                 out.precision(2);
                 
-                out << setw(10) << Arces[i][j].cost ;
-                out << setw(10) << Arces[i][j].time <<endl;
+                out << setw(10) << Arces[i][j].cost ;  //obj
+                out << setw(10) << Arces[i][j].time <<endl;   //constraint
+                
+                // cost obj
+                // time constraint
 
                 out.copyfmt(cout_state);
                 Cnt_test++;
@@ -630,8 +652,6 @@ void gen_data_with_feasibility(config_t configt, config_d configd)
                 
         out << endl << endl;
 
-
-        
         for (int i = 0; i < Ntnd; i++)
         {
             int nbours=0;
@@ -651,14 +671,19 @@ void gen_data_with_feasibility(config_t configt, config_d configd)
                 
             }
             out<<endl;
-            
         }
 
         out<<endl;
         out<<endl;
         out<<endl;
 
-        out << Nfpath<<endl;
+        out << Nfpath<<endl<<endl;
+
+        out << setw(4) << "Nb";
+        out << setw(8) << "NoP";
+        out << setw(8) << "Cost";
+        out << setw(8) << "Time"<<endl<<endl;
+
 
         for (int p = 0; p < Nfpath; p++)
         {
@@ -672,8 +697,9 @@ void gen_data_with_feasibility(config_t configt, config_d configd)
             out.setf(ios::showpoint);
             out.precision(2);
             
-            out << setw(12) << Tpaths[p] ;
+        
             out << setw(12) << Cpaths[p] ;
+            out << setw(12) << Tpaths[p] ;
 
             out.copyfmt(cout_state);
             

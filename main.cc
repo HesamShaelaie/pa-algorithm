@@ -13,6 +13,7 @@
 #include "config_r.h"
 #include "pa_algorithm.h"
 #include "dijkstra.h"
+#include "Qlearning.h"
 
 #include "tests.h"
 #include "inputesting.h"
@@ -139,8 +140,42 @@ int main(int argc, char** argv)
                 testing(Second, &configt);
                 break;
 
-            case 6: //run the algorithm
+            case 6: //run qlearning
                 
+                configd.Ntnd = 10;
+                configd.update();
+                configr.update(configd);
+
+                for (int x = 0; x < configr.Itnd; x++)
+                {
+                    cout << configr.Tname[x] << "::";
+                    
+
+                    InstanceInfo *Info = reading(configt, configr, x);
+                    
+                    if (configt.testing)
+                        InputTesting(Info);
+                    
+                    Info->create_map();
+
+                    if (configt.testing)
+                    {
+                        InputTesting(Info);
+                        InputTesting_Find(Info);
+                        InputTesting_FindM(Info);
+                    }
+                    
+                    Dijkstra(Info);
+
+                    if (configt.testing) // write the Dijk in seperate files
+                        Info->dump_dijk();
+
+                    Qlearning(Info, true);
+                    //PrintSolution(Info);
+                    Info->del_memory();
+                    //cout << "   OK!"<<endl;
+                    break;
+                }
 
                 break;
         

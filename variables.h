@@ -21,8 +21,9 @@ struct arcinfo
     bool key;
     int st;
     int ed;
-    float cost;
-    float time;
+    
+    float cost; //obj
+    float time;  //constraint
 
     arcinfo();
 
@@ -57,6 +58,8 @@ struct nodeinfo
     float y;
     int Nnbr;
     int *nbr;
+    int Cnbr = 0;
+    arcinfo **arcs;
     lableinfo lable;
     
     nodeinfo();
@@ -84,7 +87,7 @@ struct InstanceInfo
     
     int start;
     int finish;
-    float cost;
+    float constraint;
 
     float sol_obj;
     int *sol_path;
@@ -93,22 +96,26 @@ struct InstanceInfo
     arcinfo *arcs;
     nodeinfo *nodes;
 
-    int Npaths;
-    int *PathsN;
-    int **PathsO;
-    float *PathsT;
-    float *PathsW;
-    bool *Dijk_S[2];
+    // testing part
+
+    int Npaths; // how many path exist in the testing section
+    int *PathsN; //?    number of node on the path
+
+    int **PathsO; //?   id of nodes  
+    float *PathsT; //?  time
+    float *PathsW; //?  weight
+
+    bool *Dijk_S[2]; // for what reason???
     float *Dijk_f[2];
+
     char add_out[300];
     char name[300];
     char Dijk_name[300];
     
     std::map<long long, arcinfo*> Dic;
     std::map<long long, arcinfo*>::iterator idx;
+
     long long index;
-
-
 
     // solution variables
     float SolF;
@@ -120,6 +127,7 @@ struct InstanceInfo
     arcinfo * FindEdge(int fm, int to);
     arcinfo * FindEdgeM(int fm, int to);
     
+    void find_max_n();
     void dump_dijk();
     void all_memory();
     void all_dijk();

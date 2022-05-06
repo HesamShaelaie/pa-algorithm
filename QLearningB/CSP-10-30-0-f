@@ -1,0 +1,102 @@
+Paths generated:
+
+   Itr::       1   StG::      13   StR::       0   Obj:: 2134.05   Con:: 2502.48   Npt::       4      ||   0   8   6   7   9
+   Itr::       2   StG::      15   StR::       0   Obj:: 1747.95   Con:: 1832.08   Npt::       3      ||   0   8   2   9
+   Itr::       3   StG::      15   StR::       0   Obj:: 1747.95   Con:: 1832.08   Npt::       3      ||   0   8   2   9
+   Itr::       4   StG::      15   StR::       0   Obj:: 1747.95   Con:: 1832.08   Npt::       3      ||   0   8   2   9
+   Itr::       5   StG::      15   StR::       0   Obj:: 1747.95   Con:: 1832.08   Npt::       3      ||   0   8   2   9
+   Itr::       6   StG::      15   StR::       0   Obj:: 1747.95   Con:: 1832.08   Npt::       3      ||   0   8   2   9
+   Itr::       7   StG::      15   StR::       0   Obj:: 1747.95   Con:: 1832.08   Npt::       3      ||   0   8   2   9
+   Itr::       8   StG::      15   StR::       0   Obj:: 1747.95   Con:: 1832.08   Npt::       3      ||   0   8   2   9
+   Itr::       9   StG::      15   StR::       0   Obj:: 1747.95   Con:: 1832.08   Npt::       3      ||   0   8   2   9
+   Itr::      10   StG::      15   StR::       0   Obj:: 1747.95   Con:: 1832.08   Npt::       3      ||   0   8   2   9
+   Itr::      11   StG::      15   StR::       0   Obj:: 1747.95   Con:: 1832.08   Npt::       3      ||   0   8   2   9
+   Itr::      12   StG::      15   StR::       0   Obj:: 1747.95   Con:: 1832.08   Npt::       3      ||   0   8   2   9
+   Itr::      13   StG::      17   StR::       0   Obj:: 1747.95   Con:: 1832.08   Npt::       3      ||   0   8   2   9
+   Itr::      14   StG::      19   StR::       0   Obj:: 1449.43   Con::  1811.8   Npt::       2      ||   0   7   9
+   Itr::      15   StG::      19   StR::       0   Obj:: 1449.43   Con::  1811.8   Npt::       2      ||   0   7   9
+   Itr::      16   StG::      19   StR::       0   Obj:: 1449.43   Con::  1811.8   Npt::       2      ||   0   7   9
+   Itr::      17   StG::      19   StR::       0   Obj:: 1449.43   Con::  1811.8   Npt::       2      ||   0   7   9
+   Itr::      18   StG::      38   StR::       0   Obj:: 1449.43   Con::  1811.8   Npt::       2      ||   0   7   9
+   Itr::      19   StG::      38   StR::       0   Obj:: 1449.43   Con::  1811.8   Npt::       2      ||   0   7   9
+   Itr::      20   StG::      38   StR::       0   Obj:: 1449.43   Con::  1811.8   Npt::       2      ||   0   7   9
+   Itr::      21   StG::      38   StR::       0   Obj:: 1449.43   Con::  1811.8   Npt::       2      ||   0   7   9
+   Itr::      22   StG::      38   StR::       0   Obj:: 1449.43   Con::  1811.8   Npt::       2      ||   0   7   9
+   Itr::      23   StG::      38   StR::       0   Obj:: 1449.43   Con::  1811.8   Npt::       2      ||   0   7   9
+   Itr::      24   StG::      38   StR::       0   Obj:: 1449.43   Con::  1811.8   Npt::       2      ||   0   7   9
+   Itr::      25   StG::      38   StR::       0   Obj:: 1449.43   Con::  1811.8   Npt::       2      ||   0   7   9
+   Itr::      26   StG::      38   StR::       0   Obj:: 1449.43   Con::  1811.8   Npt::       2      ||   0   7   9
+   Itr::      27   StG::      38   StR::       0   Obj:: 1449.43   Con::  1811.8   Npt::       2      ||   0   7   9
+   Itr::      28   StG::      38   StR::       0   Obj:: 1449.43   Con::  1811.8   Npt::       2      ||   0   7   9
+   Itr::      29   StG::      42   StR::       0   Obj:: 1449.43   Con::  1811.8   Npt::       2      ||   0   7   9
+   Itr::      30   StG::      42   StR::       0   Obj:: 1449.43   Con::  1811.8   Npt::       2      ||   0   7   9
+   Itr::      31   StG::      46   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      32   StG::      46   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      33   StG::      50   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      34   StG::      50   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      35   StG::      50   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      36   StG::      50   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      37   StG::      50   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      38   StG::      50   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      39   StG::      50   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      40   StG::      50   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      41   StG::      50   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      42   StG::      50   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      43   StG::      50   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      44   StG::      50   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      45   StG::      50   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      46   StG::      50   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      47   StG::      50   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      48   StG::      50   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      49   StG::      54   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      50   StG::      54   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      51   StG::      54   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      52   StG::      54   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      53   StG::      54   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      54   StG::      54   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      55   StG::      54   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      56   StG::      54   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      57   StG::      54   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      58   StG::      54   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      59   StG::      54   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      60   StG::      54   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      61   StG::      54   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      62   StG::      54   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      63   StG::      59   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      64   StG::      59   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      65   StG::      72   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      66   StG::      72   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      67   StG::      72   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      68   StG::      72   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      69   StG::      72   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      70   StG::      72   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      71   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      72   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      73   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      74   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      75   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      76   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      77   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      78   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      79   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      80   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      81   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      82   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      83   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      84   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      85   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      86   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      87   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      88   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      89   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      90   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      91   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      92   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      93   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      94   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      95   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      96   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      97   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      98   StG::      79   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::      99   StG::      84   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
+   Itr::     100   StG::      84   StR::       0   Obj::  1164.8   Con:: 1456.01   Npt::       2      ||   0   1   9
